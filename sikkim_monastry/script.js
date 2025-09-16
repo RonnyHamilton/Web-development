@@ -210,7 +210,7 @@ function render(list) {
 
 function openDetails(m) {
   const dlg = document.createElement('dialog');
-  dlg.innerHTML = `
+        dlg.innerHTML = `
         <div class="modal-head">
           <strong>${m.name}</strong>
           <button class="btn ghost" data-close>Close</button>
@@ -218,15 +218,77 @@ function openDetails(m) {
         <div class="modal-body">
           <p style="margin-top:0; color: var(--muted)">${m.region} • Lineage: ${m.lineage.join(', ')}</p>
           <p>${m.blurb}</p>
-          <div class="actions">
+          <div style="margin-top:1.2rem;">
+            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.6rem;">
+              <button id="narrativePlayBtn" class="btn" style="background:linear-gradient(125deg,#3ccf91 0%,#ffd166 100%);color:#222;">▶️ Play</button>
+              <button id="narrativePauseBtn" class="btn ghost" style="border-color:#ffd166;color:#ffd166;">⏸️ Pause</button>
+              <button id="narrativeStopBtn" class="btn ghost" style="border-color:#c73f3f;color:#c73f3f;">⏹️ Stop</button>
+            </div>
+          </div>
+          <div class="actions" style="margin-top:1.2rem;">
             <a class="btn" target="_blank" rel="noopener" href="${m.view360}">Open 360°</a>
             <a class="btn ghost" target="_blank" rel="noopener" href="${m.map}">Open in Maps</a>
           </div>
         </div>`;
   document.body.appendChild(dlg);
   dlg.showModal();
-  dlg.querySelector('[data-close]').addEventListener('click', () => { dlg.close(); dlg.remove(); });
-  dlg.addEventListener('click', (e) => { if (e.target === dlg) { dlg.close(); dlg.remove(); } });
+  dlg.querySelector('[data-close]').addEventListener('click', () => {
+    dlg.close();
+    dlg.remove();
+    if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+  });
+  dlg.addEventListener('click', (e) => {
+    if (e.target === dlg) {
+      dlg.close();
+      dlg.remove();
+      if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+    }
+  });
+        
+        // TTS controls: Play, Pause, Stop (English only)
+        let utterance = null;
+        const synth = window.speechSynthesis;
+        const playBtn = dlg.querySelector('#narrativePlayBtn');
+        const pauseBtn = dlg.querySelector('#narrativePauseBtn');
+        const stopBtn = dlg.querySelector('#narrativeStopBtn');
+        playBtn.addEventListener('click', () => {
+          if (synth.speaking) {
+            // Already speaking, resume if paused
+            if (synth.paused) synth.resume();
+            return;
+          }
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = m.blurb;
+          let text = tempDiv.textContent.trim();
+          utterance = new SpeechSynthesisUtterance(text);
+          utterance.lang = 'en';
+          // Use best English voice
+          let voices = synth.getVoices();
+          let enVoice = voices.find(v => v.lang.startsWith('en'));
+          if (enVoice) utterance.voice = enVoice;
+          synth.speak(utterance);
+        });
+        pauseBtn.addEventListener('click', () => {
+          if (synth.speaking) {
+            if (synth.paused) {
+              synth.resume();
+              pauseBtn.textContent = '⏸️ Pause';
+            } else {
+              synth.pause();
+              pauseBtn.textContent = '▶️ Resume';
+            }
+          }
+        });
+        // Listen for pause/resume events to update button text
+        window.speechSynthesis.addEventListener('pause', () => {
+          pauseBtn.textContent = '▶️ Resume';
+        });
+        window.speechSynthesis.addEventListener('resume', () => {
+          pauseBtn.textContent = '⏸️ Pause';
+        });
+        stopBtn.addEventListener('click', () => {
+          if (synth.speaking) synth.cancel();
+        });
 }
 
 // Search & filter
@@ -251,32 +313,62 @@ $('#aboutBtn').addEventListener('click', () => aboutModal.showModal());
 aboutModal.querySelector('[data-close]').addEventListener('click', () => aboutModal.close());
 
 // Theme toggle (light/dark)
-const themeBtn = $('#themeToggler');
-const THEMES = { DARK: 'dark', LIGHT: 'light' };
-const tKey = 'm360:theme';
-function setTheme(t) { document.documentElement.dataset.theme = t; localStorage.setItem(tKey, t); }
-function applyTheme() {
-  const t = localStorage.getItem(tKey) || THEMES.DARK;
-  setTheme(t);
-  // optional: tweak variables when light
-  if (t === THEMES.LIGHT) {
-    document.documentElement.style.setProperty('--bg', '#f6f7fb');
-    document.documentElement.style.setProperty('--panel', '#ffffff');
-    document.documentElement.style.setProperty('--text', '#0e1320');
-    document.documentElement.style.setProperty('--muted', '#4b5466');
-  } else {
-    document.documentElement.style.removeProperty('--bg');
-    document.documentElement.style.removeProperty('--panel');
-    document.documentElement.style.removeProperty('--text');
-    document.documentElement.style.removeProperty('--muted');
-  }
-}
-themeBtn.addEventListener('click', () => { const now = (localStorage.getItem(tKey) || THEMES.DARK) === THEMES.DARK ? THEMES.LIGHT : THEMES.DARK; setTheme(now); applyTheme(); });
-
 // Boot
 render(MONASTERIES);
-applyTheme();
 
 // Accessibility helpers (keyboard focus outline only when tabbing)
 function handleFirstTab(e) { if (e.key === 'Tab') { document.body.classList.add('user-is-tabbing'); window.removeEventListener('keydown', handleFirstTab); } }
 window.addEventListener('keydown', handleFirstTab);
+// Text-to-Speech functionality with voice selection, language detection, and preferences storage
+window.addEventListener('load', () => {
+  const synth = window.speechSynthesis;
+  const speakBtn = document.getElementById('speakBtn');
+  const voiceSelect = document.getElementById('voiceSelect');
+  const historyText = document.getElementById('historyText');
+
+  let voices = [];
+
+  function populateVoices() {
+    voices = synth.getVoices();
+    voiceSelect.innerHTML = '';
+
+    voices.forEach((voice, index) => {
+      const option = document.createElement('option');
+      option.value = index;
+      option.textContent = `${voice.name} (${voice.lang})`;
+      voiceSelect.appendChild(option);
+    });
+
+    // Try to auto-select saved voice or user's browser language
+    const savedIndex = localStorage.getItem('preferredVoice');
+    if (savedIndex !== null && voices[savedIndex]) {
+      voiceSelect.value = savedIndex;
+    } else {
+      const userLang = navigator.language || 'en-US';
+      const defaultVoice = voices.find(v => v.lang.startsWith(userLang));
+      if (defaultVoice) {
+        voiceSelect.value = voices.indexOf(defaultVoice);
+      }
+    }
+  }
+
+  // Initial population
+  populateVoices();
+  if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = populateVoices;
+  }
+
+  speakBtn.addEventListener('click', () => {
+    if (!synth) {
+      alert('Speech synthesis not supported in this browser.');
+      return;
+    }
+    const utterance = new SpeechSynthesisUtterance(historyText.textContent);
+    const selectedVoice = voices[voiceSelect.value];
+    if (selectedVoice) {
+      utterance.voice = selectedVoice;
+      localStorage.setItem('preferredVoice', voiceSelect.value); // Save selection
+    }
+    synth.speak(utterance);
+  });
+});
