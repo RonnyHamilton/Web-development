@@ -32,8 +32,16 @@ body {
     font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     color: var(--text);
     /* ✅ Your image as full-screen background */
-    background: url("hero-monastery.jpg") no-repeat center center fixed, var(--bg);
-    background-size:100vw;
+        background: url("hero-monastery.jpg") no-repeat center center fixed, var(--bg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        /* Responsive fallback for small screens */
+        @media (max-width: 600px) {
+            body {
+                background-size: contain;
+            }
+        }
     overflow-x: hidden;
 }
 
@@ -197,10 +205,17 @@ a {
     overflow: hidden;
     position: relative;
     box-shadow: var(--shadow);
-    background:url(enchey-monastery.jpg);
-    background-position: bottom;
+    background: url(enchey-monastery.jpg) no-repeat center center;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: 500px;
+}
+
+@media (max-width: 600px) {
+    .hero-card {
+        background-size: contain;
+    }
+}
 }
 
 .hero-badge {
