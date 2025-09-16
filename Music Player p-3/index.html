@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+    <div class="box left">
+        <h3>Your Library</h3>
+        <div class="albums">
+            <div class="album">
+                <img src="songs/Coolie(2025)/album.jpg" alt="">
+                <h4>Coolie</h4>
+            </div>
+             <div class="album">
+                <img src="songs/Coolie(2025)/album.jpg" alt="">
+                <h4>Coolie</h4>
+            </div>
+             <div class="album">
+                <img src="songs/Coolie(2025)/album.jpg" alt="">
+                <h4>Coolie</h4>
+            </div>
+        </div>
+    </div>
+    <div class="box mainbox">
+        <div id="albumimage">
+            <img src="songs/Coolie(2025)/album.jpg">
+        </div>
+        <div class="songname">
+            <h3>Powerhouse</h3>
+        </div>
+        <div class="controls">
+            <img id="next" src="previous.svg" alt="">
+            <div class="playbtn">
+                <img id="play" src="play.svg" alt="">
+            </div>
+            <img id="next" src="next.svg" alt="">
+        </div>
+        <audio id="song">
+            <source src="songs/Coolie(2025)/Powerhouse.mp3">
+        </audio>
+        <div class="audiocontrol">
+            <img src="audio.svg" alt="">
+            <input id="progress" type="range">
+        </div>
+        <div class="runtime">
+            <p>0:00</p>
+            <div class="controlbar">
+                <div class="dot"></div>
+            </div>
+            <p>3:00</p>
+        </div>
+
+    </div>
+    <div class="box right">
+        <h3>Songs</h3>
+        <div class="song">
+            <div class="sideimg">
+                <img src="songs/Coolie(2025)/album.jpg">
+                <img id="play1"src="play copy.svg">
+            </div>
+            <div class="textcontent">
+                <h2>Powerhouse</h2>
+                <p>Anirudh Ravichander</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
