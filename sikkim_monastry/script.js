@@ -1,3 +1,39 @@
+// Hamburger dropdown toggle for mobile nav
+document.addEventListener('DOMContentLoaded', function() {
+  const navToggle = document.querySelector('.nav-toggle');
+  const navDropdown = document.getElementById('navDropdown');
+  if (navToggle && navDropdown) {
+    navToggle.addEventListener('click', function() {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !expanded);
+      navDropdown.classList.toggle('open');
+    });
+  }
+});
+// Hamburger dropdown toggle for mobile nav
+document.addEventListener('DOMContentLoaded', function() {
+  const navToggle = document.querySelector('.nav-toggle');
+  const navDropdown = document.getElementById('navDropdown');
+  if (navToggle && navDropdown) {
+    navToggle.addEventListener('click', function() {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !expanded);
+      navDropdown.classList.toggle('open');
+    });
+  }
+});
+// Hamburger menu toggle for mobile nav
+document.addEventListener('DOMContentLoaded', function() {
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.getElementById('navLinks');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', function() {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !expanded);
+      navLinks.classList.toggle('open');
+    });
+  }
+});
 // -----------------------------
 // Content (edit here to add more)
 // -----------------------------
