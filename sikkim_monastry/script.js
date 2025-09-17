@@ -44,7 +44,7 @@ const MONASTERIES = [
     lineage: ['Kagyu', 'Tibetan'],
     // Public Street View & Map links (open externally)
     view360: 'https://maps.app.goo.gl/9iYh1nfsjWfUJZAG6?g_st=aw',
-  map: 'https://maps.app.goo.gl/s6wFBCbeTY4oUUoF6',
+    map: 'https://maps.app.goo.gl/s6wFBCbeTY4oUUoF6',
     image: 'rumtek-monastery.jpeg',
     blurb: `<p>Perched on a quiet hilltop, overlooking the lush valleys of Sikkim, Rumtek Monastery is more than just a spiritual center — it’s a journey into Tibetan tradition, history, and culture.</p>
           <p>Originally founded in 1734 by Wangchuk Dorje, the 9th Karmapa, with the royal patronage of the Chogyals of Sikkim, the monastery has long been the principal seat of the Kagyu school of Tibetan Buddhism. For centuries, it stood as a symbol of peace and prayer — until time and neglect left it in ruins.</p>
@@ -64,7 +64,7 @@ const MONASTERIES = [
     region: 'West Sikkim • Pelling',
     lineage: ['Nyingma', 'Tibetan'],
     view360: 'https://maps.app.goo.gl/DxeNbE2CFB3pi2kS6?g_st=aw',
-  map: 'https://maps.app.goo.gl/eLZFGEDtW8jFJ7ne7',
+    map: 'https://maps.app.goo.gl/AyfYGsXqP1YP4CNf7?g_st=aw',
     image: 'pemayangtse-monastery.jpeg',
     blurb: ``,
   },
@@ -73,7 +73,7 @@ const MONASTERIES = [
     region: 'West Sikkim • Near Yuksom',
     lineage: ['Nyingma'],
     view360: 'https://maps.app.goo.gl/ZTY1cwHUroh1DfcR9?g_st=ac',
-  map: 'https://maps.app.goo.gl/AyfYGsXqP1YP4CNf7?g_st=aw',
+    map: 'https://maps.app.goo.gl/p9zTJdoHbViE1kDZ9',
     image: 'tashiding-monastery.jpg',
     blurb: `
           <h4>Overview</h4>
@@ -96,7 +96,7 @@ const MONASTERIES = [
     region: 'East Sikkim • Gangtok',
     lineage: ['Nyingma'],
     view360: 'https://maps.app.goo.gl/XxAW3Q7jEm6AiWRL6?g_st=ac',
-  map: 'https://maps.app.goo.gl/FmG63j33B1ePmf629',
+    map: 'https://maps.app.goo.gl/i8PTpuo2mzFm2BNF8?g_st=aw',
     image: 'enchey-monastery.jpeg',
     blurb: `
           <h4>Overview</h4>
@@ -121,7 +121,7 @@ const MONASTERIES = [
     region: 'South Sikkim • Ravangla',
     lineage: ['Kagyu'],
     view360: 'https://maps.app.goo.gl/pJpfw5a6CTViyNgx5?g_st=ac',
-  map: 'https://maps.app.goo.gl/CTuSX3ovT6hXkssh9',
+    map: 'https://maps.app.goo.gl/WhhvLYPxnfqkqH8g9',
     image: 'ralang-monastery.jpg',
     blurb: `
           <h4>Overview</h4>
@@ -144,7 +144,7 @@ const MONASTERIES = [
     region: 'North Sikkim • Phodong',
     lineage: ['Kagyu'],
     view360: 'https://maps.app.goo.gl/chNWhLQHh8TLHjCg9?g_st=ac',
-    map: 'https://maps.app.goo.gl/Jm3T2Kz9DgY8eL8n8',
+    map: 'https://maps.app.goo.gl/eLZFGEDtW8jFJ7ne7',
     image: 'phodong-monastery.jpeg',
     blurb: `
           <h4>Overview</h4>
@@ -228,7 +228,12 @@ function render(list) {
     const views = node.querySelector('[data-views]');
     views.href = m.view360; views.setAttribute('aria-label', `Open 360 for ${m.name}`);
     const map = node.querySelector('[data-map]');
-    map.href = m.map;
+    if (map && m.map) {
+      map.href = m.map;
+      map.style.display = '';
+    } else if (map) {
+      map.style.display = 'none';
+    }
 
     // More modal
     node.querySelector('[data-more]').addEventListener('click', () => openDetails(m));
@@ -263,9 +268,15 @@ function openDetails(m) {
               </div>
             </div>
           </div>
+          <div style="margin-top:1.5rem;">
+            <h4>Location Map</h4>
+            <div style="width:100%;max-width:600px;margin:auto;">
+              <iframe src="https://www.google.com/maps?q=${encodeURIComponent(m.name + ' Sikkim')}&output=embed" width="100%" height="300" style="border-radius:12px;border:none;box-shadow:0 2px 12px rgba(0,0,0,0.12);" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
           <div class="actions" style="margin-top:1.2rem;">
             <a class="btn" target="_blank" rel="noopener" href="${m.view360}">Open 360°</a>
-            <a class="btn ghost" target="_blank" rel="noopener" href="${m.map}">Open in Maps</a>
+            ${m.map ? `<a class="btn ghost" target="_blank" rel="noopener" href="${m.map}">Open in Maps</a>` : ''}
           </div>
         </div>`;
   document.body.appendChild(dlg);
