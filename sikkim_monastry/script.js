@@ -613,14 +613,17 @@ document.addEventListener('DOMContentLoaded', function () {
         <p>2. Mountain Top Cafe</p>
         <p>3. Himalayan Flavors</p>`
       if (userMsg.toLowerCase().includes("phodong") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Hotels near Phodong Monastery:</p>
+      
 <p>1. The Mansarovar Hotel & Banquet</p>
 <p>2. Days Inn by Wyndham Gangtok</p>
 <p>3. Lemon Tree Hotel, Gangtok.</p>
 <p>4. Rufina Pinasa Residency </p>`
-
+        if (userMsg.toLowerCase().includes("hello")) botReply = `<p>Hello I am here to assist you</p>`
       messages.innerHTML += `<div class="message bot"><b>Bot:</b> ${botReply}</div>`;
       messages.scrollTop = messages.scrollHeight;
       input.value = "";
     }
+   
   });
 });
+
