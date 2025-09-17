@@ -370,16 +370,16 @@
     }
 
     .hero-card {
-        aspect-ratio: 16/10;
+        aspect-ratio: 16/18;
         border-radius: var(--radius);
         overflow: hidden;
         position: relative;
         box-shadow: var(--shadow);
-        background: url("enchey-monastery.jpg") no-repeat center center;
+        background: url("3d/enchey-monastery.jpg") no-repeat center center;
         background-size: cover;
         object-fit: cover;
         /* Added for image responsiveness */
-        background-position: center;
+        background-position: left;
         background-repeat: no-repeat;
     }
 
