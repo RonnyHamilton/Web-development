@@ -11,11 +11,36 @@
   <!-- NAVIGATION -->
   <nav class="nav container">
     <div class="nav-inner glass">
-      <div class="brand"><span class="logo"></span> Monastery360</div>
+  <div class="brand">
+    <span class="logo" style="display:inline-block;width:40px;height:40px;vertical-align:middle;">
+      <svg viewBox="0 0 40 40" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="roofGradient" x1="0" y1="0" x2="40" y2="0" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#e76e3c"/>
+            <stop offset="1" stop-color="#ffd166"/>
+          </linearGradient>
+        </defs>
+        <!-- Roof -->
+        <polygon points="8,16 20,6 32,16" fill="url(#roofGradient)" stroke="#c73f3f" stroke-width="2"/>
+        <!-- Main building -->
+        <rect x="12" y="16" width="16" height="14" rx="3" fill="#fff" stroke="#c73f3f" stroke-width="2"/>
+        <!-- Door -->
+        <rect x="18" y="24" width="4" height="6" rx="1" fill="#ffd166" stroke="#e76e3c" stroke-width="1.2"/>
+        <!-- Steps -->
+        <rect x="16" y="32" width="8" height="2" rx="1" fill="#e76e3c" opacity="0.7"/>
+        <!-- Accent dots -->
+        <circle cx="20" cy="20" r="1.2" fill="#c73f3f"/>
+        <circle cx="16" cy="20" r="1" fill="#c73f3f"/>
+        <circle cx="24" cy="20" r="1" fill="#c73f3f"/>
+      </svg>
+    </span>
+    Monastery360
+  </div>
       <div class="links" aria-label="Primary">
         <a href="#features">Features</a>
         <a href="#explore">Explore</a>
         <a href="#impact">Impact</a>
+        <a href="#manuscripts">Manuscripts</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
@@ -79,6 +104,9 @@
         <p class="sub">Sikkim is home to many significant monasteries (Gompas) that are centers of spiritual and cultural life, including the famous Rumtek Monastery, the seat of the Kagyü lineage of Tibetan Buddhism, and the ancient Pemayangtse Monastery. These monasteries, built in distinctive Tibetan architectural style with intricate murals, thangkas, and statues, are located in scenic areas and showcase the deep Buddhist heritage of the state.  
 Major Monasteries 
 .</p>
+            <div style="margin:1.2rem 0;max-width:650px;">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3545.2545789126116!2d88.2515852!3d27.3052201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e685d35d570dcf%3A0xbba9d8f51db0ca38!2sPemayangtse%20Monastery!5e0!3m2!1sen!2sin!4v1758084089799!5m2!1sen!2sin" width="100%" height="400" style="border:0;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
       </div>
       <div class="filters" role="search">
         <input id="search" class="search" placeholder="Search by name, region or lineage…" aria-label="Search monasteries"/>
@@ -87,6 +115,35 @@ Major Monasteries
     </div>
 
     <div id="grid" class="grid cols-3"></div>
+  </section>
+
+  <!-- MANUSCRIPTS -->
+  <section class="section container" id="manuscripts">
+    <div>
+      <div class="kicker">Sacred Texts</div>
+      <h2 class="title">Ancient Manuscripts & Sacred Texts</h2>
+      <p class="sub">Discover the invaluable collection of Buddhist manuscripts preserved within Sikkim's monasteries, each telling stories of wisdom passed down through generations.</p>
+    </div>
+    <div class="grid cols-3">
+      <article class="card">
+        <div class="icon">📜</div>
+        <h3>Kangyur Collection</h3>
+        <p>The sacred collection of Buddha's direct teachings, containing over 108 volumes carefully preserved at Rumtek Monastery. Many texts were carried from Tibet during the great migration.</p>
+        <button class="btn ghost manuscript-narrate" data-text="The Kangyur Collection represents the words of Buddha himself, meticulously preserved in over 108 volumes at Rumtek Monastery. These sacred texts were carefully transported from Tibet during the historical migration, representing one of the most complete collections of Buddha's direct teachings in the region. Each volume is handwritten or block-printed on traditional paper, often with gold or silver ink for particularly sacred passages.">🔊 Listen</button>
+      </article>
+      <article class="card">
+        <div class="icon">📚</div>
+        <h3>Tengyur Manuscripts</h3>
+        <p>Ancient commentaries and treatises by Indian and Tibetan masters, featuring detailed explanations of Buddhist philosophy, logic, medicine, and arts, housed in various Sikkim monasteries.</p>
+        <button class="btn ghost manuscript-narrate" data-text="The Tengyur Manuscripts are an extensive collection of commentaries and treatises written by renowned Indian and Tibetan Buddhist masters. These texts contain detailed explanations of Buddhist philosophy, logic, traditional medicine, and sacred arts. The manuscripts are distributed across various monasteries in Sikkim, with each monastery specializing in particular aspects of Buddhist scholarship.">🔊 Listen</button>
+      </article>
+      <article class="card">
+        <div class="icon">🗝️</div>
+        <h3>Terma Treasures</h3>
+        <p>Hidden spiritual treasures and prophetic texts discovered by tertons (treasure revealers) in sacred sites across Sikkim, including teachings attributed to Guru Rinpoche.</p>
+        <button class="btn ghost manuscript-narrate" data-text="Terma Treasures are sacred texts and relics that were hidden by Guru Rinpoche and other masters for future discovery. These spiritual treasures were concealed during times of strife and are meant to be revealed at specific times by specially destined treasure revealers known as tertons. Sikkim's monasteries house several such discovered termas, containing prophecies and profound spiritual instructions.">🔊 Listen</button>
+      </article>
+    </div>
   </section>
 
   <!-- IMPACT -->

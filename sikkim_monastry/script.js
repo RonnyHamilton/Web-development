@@ -44,7 +44,7 @@ const MONASTERIES = [
     lineage: ['Kagyu', 'Tibetan'],
     // Public Street View & Map links (open externally)
     view360: 'https://maps.app.goo.gl/9iYh1nfsjWfUJZAG6?g_st=aw',
-    map: 'https://maps.app.goo.gl/srA3nU3J7N4zH1nq7',
+  map: 'https://maps.app.goo.gl/s6wFBCbeTY4oUUoF6',
     image: 'rumtek-monastery.jpeg',
     blurb: `<p>Perched on a quiet hilltop, overlooking the lush valleys of Sikkim, Rumtek Monastery is more than just a spiritual center — it’s a journey into Tibetan tradition, history, and culture.</p>
           <p>Originally founded in 1734 by Wangchuk Dorje, the 9th Karmapa, with the royal patronage of the Chogyals of Sikkim, the monastery has long been the principal seat of the Kagyu school of Tibetan Buddhism. For centuries, it stood as a symbol of peace and prayer — until time and neglect left it in ruins.</p>
@@ -64,7 +64,7 @@ const MONASTERIES = [
     region: 'West Sikkim • Pelling',
     lineage: ['Nyingma', 'Tibetan'],
     view360: 'https://maps.app.goo.gl/DxeNbE2CFB3pi2kS6?g_st=aw',
-    map: 'https://www.google.com/maps/@27.3042603,88.3015366,3a,63.3y,321.85h,106.16t/data=!3m8!1e1!3m6!1sCIHM0ogKEICAgICE7IqDxQE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgpms-cs-s%2FAB8u6HaFgQCWFbvQJAxa_5ZjrhRDjRuB2KFJEqipxJPkOED8i4zojjQIWCVcv5tXdHgeIJm-EQkHq7PPatPF8f-JUfhsCKMTXMFeLC2Icz_OIKbbI5s1p4XiltuPYT3-yzllLEegfoJdyQ%3Dw900-h600-k-no-pi-16.159999999999997-ya321.85-ro0-fo100!7i5660!8i2830?entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D',
+  map: 'https://maps.app.goo.gl/eLZFGEDtW8jFJ7ne7',
     image: 'pemayangtse-monastery.jpeg',
     blurb: ``,
   },
@@ -73,7 +73,7 @@ const MONASTERIES = [
     region: 'West Sikkim • Near Yuksom',
     lineage: ['Nyingma'],
     view360: 'https://maps.app.goo.gl/ZTY1cwHUroh1DfcR9?g_st=ac',
-    map: 'https://maps.app.goo.gl/1a2bC3d4E5fGh6i7',
+  map: 'https://maps.app.goo.gl/AyfYGsXqP1YP4CNf7?g_st=aw',
     image: 'tashiding-monastery.jpg',
     blurb: `
           <h4>Overview</h4>
@@ -96,7 +96,7 @@ const MONASTERIES = [
     region: 'East Sikkim • Gangtok',
     lineage: ['Nyingma'],
     view360: 'https://maps.app.goo.gl/XxAW3Q7jEm6AiWRL6?g_st=ac',
-    map: 'https://maps.app.goo.gl/dxF2j8Jr6t1yq3Xn7',
+  map: 'https://maps.app.goo.gl/FmG63j33B1ePmf629',
     image: 'enchey-monastery.jpeg',
     blurb: `
           <h4>Overview</h4>
@@ -121,7 +121,7 @@ const MONASTERIES = [
     region: 'South Sikkim • Ravangla',
     lineage: ['Kagyu'],
     view360: 'https://maps.app.goo.gl/pJpfw5a6CTViyNgx5?g_st=ac',
-    map: 'https://maps.app.goo.gl/wg1v7Vj2KQp8hG1b8',
+  map: 'https://maps.app.goo.gl/CTuSX3ovT6hXkssh9',
     image: 'ralang-monastery.jpg',
     blurb: `
           <h4>Overview</h4>
@@ -255,10 +255,12 @@ function openDetails(m) {
           <p style="margin-top:0; color: var(--muted)">${m.region} • Lineage: ${m.lineage.join(', ')}</p>
           <p>${m.blurb}</p>
           <div style="margin-top:1.2rem;">
-            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.6rem;">
-              <button id="narrativePlayBtn" class="btn" style="background:linear-gradient(125deg,#3ccf91 0%,#ffd166 100%);color:#222;">▶️ Play</button>
-              <button id="narrativePauseBtn" class="btn ghost" style="border-color:#ffd166;color:#ffd166;">⏸️ Pause</button>
-              <button id="narrativeStopBtn" class="btn ghost" style="border-color:#c73f3f;color:#c73f3f;">⏹️ Stop</button>
+            <div class="narration-wrapper">
+              <button id="narrativePlayBtn" class="btn ghost" style="border-color:var(--accent);color:var(--accent);">🔊 Listen</button>
+              <div class="narration-controls" style="display:none; gap:0.6rem;">
+                <button id="narrativePauseBtn" class="btn ghost" style="border-color:#ffd166;color:#ffd166;">⏸️ Pause</button>
+                <button id="narrativeStopBtn" class="btn ghost" style="border-color:#c73f3f;color:#c73f3f;">⏹️ Stop</button>
+              </div>
             </div>
           </div>
           <div class="actions" style="margin-top:1.2rem;">
@@ -352,6 +354,96 @@ aboutModal.querySelector('[data-close]').addEventListener('click', () => aboutMo
 // Boot
 render(MONASTERIES);
 
+// Narration functionality
+function setupNarration(playBtn, text) {
+  const controls = document.createElement('div');
+  controls.className = 'narration-controls';
+  controls.style.display = 'none';
+  
+  const pauseBtn = document.createElement('button');
+  pauseBtn.className = 'btn ghost';
+  pauseBtn.textContent = '⏸️ Pause';
+  
+  const stopBtn = document.createElement('button');
+  stopBtn.className = 'btn ghost';
+  stopBtn.style.borderColor = '#c73f3f';
+  stopBtn.style.color = '#c73f3f';
+  stopBtn.textContent = '⏹️ Stop';
+  
+  controls.appendChild(pauseBtn);
+  controls.appendChild(stopBtn);
+  playBtn.parentNode.insertBefore(controls, playBtn.nextSibling);
+
+  let isPlaying = false;
+  let utterance = null;
+
+  playBtn.addEventListener('click', () => {
+    if (!window.speechSynthesis) {
+      alert('Speech synthesis not supported in your browser.');
+      return;
+    }
+
+    if (isPlaying && window.speechSynthesis.paused) {
+      window.speechSynthesis.resume();
+      return;
+    }
+
+    // Stop any existing narration
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+    }
+
+    utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en';
+
+    // Use best English voice
+    let voices = window.speechSynthesis.getVoices();
+    let enVoice = voices.find(v => v.lang.startsWith('en'));
+    if (enVoice) utterance.voice = enVoice;
+
+    // Show controls when playing starts
+    utterance.onstart = () => {
+      isPlaying = true;
+      controls.style.display = 'flex';
+      playBtn.style.display = 'none';
+    };
+
+    // Hide controls when finished
+    utterance.onend = () => {
+      isPlaying = false;
+      controls.style.display = 'none';
+      playBtn.style.display = 'inline-flex';
+    };
+
+    window.speechSynthesis.speak(utterance);
+  });
+
+  pauseBtn.addEventListener('click', () => {
+    if (window.speechSynthesis.speaking) {
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+        pauseBtn.textContent = '⏸️ Pause';
+      } else {
+        window.speechSynthesis.pause();
+        pauseBtn.textContent = '▶️ Resume';
+      }
+    }
+  });
+
+  stopBtn.addEventListener('click', () => {
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      controls.style.display = 'none';
+      playBtn.style.display = 'inline-flex';
+    }
+  });
+}
+
+// Initialize narration for all manuscript buttons
+document.querySelectorAll('.manuscript-narrate').forEach(btn => {
+  setupNarration(btn, btn.dataset.text);
+});
+
 // Accessibility helpers (keyboard focus outline only when tabbing)
 function handleFirstTab(e) { if (e.key === 'Tab') { document.body.classList.add('user-is-tabbing'); window.removeEventListener('keydown', handleFirstTab); } }
 window.addEventListener('keydown', handleFirstTab);
@@ -406,5 +498,55 @@ window.addEventListener('load', () => {
       localStorage.setItem('preferredVoice', voiceSelect.value); // Save selection
     }
     synth.speak(utterance);
+  });
+
+  // Handle manuscript narration buttons
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('manuscript-narrate')) {
+      const text = e.target.dataset.text;
+      if (!synth) {
+        alert('Speech synthesis not supported in this browser.');
+        return;
+      }
+      
+      // Stop any current narration
+      if (synth.speaking) {
+        synth.cancel();
+      }
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en';
+      // Use best English voice
+      let voices = synth.getVoices();
+      let enVoice = voices.find(v => v.lang.startsWith('en'));
+      if (enVoice) utterance.voice = enVoice;
+      
+      // Update button text while speaking
+      const btn = e.target;
+      const originalText = btn.textContent;
+      btn.textContent = '⏸️ Pause';
+      
+      utterance.onend = () => {
+        btn.textContent = originalText;
+      };
+      
+      utterance.onpause = () => {
+        btn.textContent = '▶️ Resume';
+      };
+      
+      utterance.onresume = () => {
+        btn.textContent = '⏸️ Pause';
+      };
+      
+      btn.onclick = () => {
+        if (synth.speaking && !synth.paused) {
+          synth.pause();
+        } else if (synth.paused) {
+          synth.resume();
+        }
+      };
+      
+      synth.speak(utterance);
+    }
   });
 });
