@@ -1,9 +1,9 @@
 // Hamburger dropdown toggle for mobile nav
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const navToggle = document.querySelector('.nav-toggle');
   const navDropdown = document.getElementById('navDropdown');
   if (navToggle && navDropdown) {
-    navToggle.addEventListener('click', function() {
+    navToggle.addEventListener('click', function () {
       const expanded = navToggle.getAttribute('aria-expanded') === 'true';
       navToggle.setAttribute('aria-expanded', !expanded);
       navDropdown.classList.toggle('open');
@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 // Hamburger dropdown toggle for mobile nav
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const navToggle = document.querySelector('.nav-toggle');
   const navDropdown = document.getElementById('navDropdown');
   if (navToggle && navDropdown) {
-    navToggle.addEventListener('click', function() {
+    navToggle.addEventListener('click', function () {
       const expanded = navToggle.getAttribute('aria-expanded') === 'true';
       navToggle.setAttribute('aria-expanded', !expanded);
       navDropdown.classList.toggle('open');
@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 // Hamburger menu toggle for mobile nav
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.getElementById('navLinks');
   if (navToggle && navLinks) {
-    navToggle.addEventListener('click', function() {
+    navToggle.addEventListener('click', function () {
       const expanded = navToggle.getAttribute('aria-expanded') === 'true';
       navToggle.setAttribute('aria-expanded', !expanded);
       navLinks.classList.toggle('open');
@@ -45,7 +45,7 @@ const MONASTERIES = [
     // Public Street View & Map links (open externally)
     view360: 'https://maps.app.goo.gl/9iYh1nfsjWfUJZAG6?g_st=aw',
     map: 'https://maps.app.goo.gl/s6wFBCbeTY4oUUoF6',
-    image: 'rumtek-monastery.jpeg',
+    image: 'rumtek/rumtek-monastery.jpeg',
     blurb: `<p>Perched on a quiet hilltop, overlooking the lush valleys of Sikkim, Rumtek Monastery is more than just a spiritual center — it’s a journey into Tibetan tradition, history, and culture.</p>
           <p>Originally founded in 1734 by Wangchuk Dorje, the 9th Karmapa, with the royal patronage of the Chogyals of Sikkim, the monastery has long been the principal seat of the Kagyu school of Tibetan Buddhism. For centuries, it stood as a symbol of peace and prayer — until time and neglect left it in ruins.</p>
           <p>The revival of Rumtek began in the 1950s, when His Holiness the 16th Gyalwa Karmapa, Rangjung Rigpe Dorje, visited the site during a pilgrimage. After escaping Tibet in 1959, he eventually chose Rumtek as his new seat. With support from the 11th Chogyal of Sikkim, Tashi Namgyal, who donated 74 acres of land, and encouragement from India’s Prime Minister Jawaharlal Nehru, the monastery’s restoration became a community effort — with locals contributing labor, food, and clothing.</p>
@@ -65,7 +65,7 @@ const MONASTERIES = [
     lineage: ['Nyingma', 'Tibetan'],
     view360: 'https://maps.app.goo.gl/DxeNbE2CFB3pi2kS6?g_st=aw',
     map: 'https://maps.app.goo.gl/AyfYGsXqP1YP4CNf7?g_st=aw',
-    image: 'pemayangtse-monastery.jpeg',
+    image: 'pemayangste/pemayangtse-monastery.jpeg',
     blurb: ``,
   },
   {
@@ -74,7 +74,7 @@ const MONASTERIES = [
     lineage: ['Nyingma'],
     view360: 'https://maps.app.goo.gl/ZTY1cwHUroh1DfcR9?g_st=ac',
     map: 'https://maps.app.goo.gl/p9zTJdoHbViE1kDZ9',
-    image: 'tashiding-monastery.jpg',
+    image: 'tashiding/tashiding-monastery.jpg',
     blurb: `
           <h4>Overview</h4>
           <p>Tashiding sits on a hill between the <em>Rathong</em> and <em>Rangeet</em> rivers near Yuksom and is a major <em>Nyingma</em> center.</p>
@@ -97,7 +97,7 @@ const MONASTERIES = [
     lineage: ['Nyingma'],
     view360: 'https://maps.app.goo.gl/XxAW3Q7jEm6AiWRL6?g_st=ac',
     map: 'https://maps.app.goo.gl/i8PTpuo2mzFm2BNF8?g_st=aw',
-    image: 'enchey-monastery.jpeg',
+    image: 'enchey/enchey-monastery.jpeg',
     blurb: `
           <h4>Overview</h4>
           <p>Set on a gentle ridge above <strong>Pelling</strong>, Pemayangtse (meaning “Perfect Sublime Lotus”) is one of Sikkim’s oldest
@@ -122,7 +122,7 @@ const MONASTERIES = [
     lineage: ['Kagyu'],
     view360: 'https://maps.app.goo.gl/pJpfw5a6CTViyNgx5?g_st=ac',
     map: 'https://maps.app.goo.gl/WhhvLYPxnfqkqH8g9',
-    image: 'ralang-monastery.jpg',
+    image: 'ralang/ralang-monastery.jpg',
     blurb: `
           <h4>Overview</h4>
           <p>Ralang (near <strong>Ravangla</strong>) is an important seat of the <em>Kagyu</em> tradition. The area includes the older complex
@@ -145,7 +145,7 @@ const MONASTERIES = [
     lineage: ['Kagyu'],
     view360: 'https://maps.app.goo.gl/chNWhLQHh8TLHjCg9?g_st=ac',
     map: 'https://maps.app.goo.gl/eLZFGEDtW8jFJ7ne7',
-    image: 'phodong-monastery.jpeg',
+    image: 'phodong/phodong-monastery.jpeg',
     blurb: `
           <h4>Overview</h4>
           <p>Phodong, in North Sikkim, is a prominent <em>Kagyu</em> monastery with a peaceful setting and vibrant mural art.</p>
@@ -251,7 +251,7 @@ function render(list) {
 
 function openDetails(m) {
   const dlg = document.createElement('dialog');
-        dlg.innerHTML = `
+  dlg.innerHTML = `
         <div class="modal-head">
           <strong>${m.name}</strong>
           <button class="btn ghost" data-close>Close</button>
@@ -293,51 +293,51 @@ function openDetails(m) {
       if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
     }
   });
-        
-        // TTS controls: Play, Pause, Stop (English only)
-        let utterance = null;
-        const synth = window.speechSynthesis;
-        const playBtn = dlg.querySelector('#narrativePlayBtn');
-        const pauseBtn = dlg.querySelector('#narrativePauseBtn');
-        const stopBtn = dlg.querySelector('#narrativeStopBtn');
-        playBtn.addEventListener('click', () => {
-          if (synth.speaking) {
-            // Already speaking, resume if paused
-            if (synth.paused) synth.resume();
-            return;
-          }
-          const tempDiv = document.createElement('div');
-          tempDiv.innerHTML = m.blurb;
-          let text = tempDiv.textContent.trim();
-          utterance = new SpeechSynthesisUtterance(text);
-          utterance.lang = 'en';
-          // Use best English voice
-          let voices = synth.getVoices();
-          let enVoice = voices.find(v => v.lang.startsWith('en'));
-          if (enVoice) utterance.voice = enVoice;
-          synth.speak(utterance);
-        });
-        pauseBtn.addEventListener('click', () => {
-          if (synth.speaking) {
-            if (synth.paused) {
-              synth.resume();
-              pauseBtn.textContent = '⏸️ Pause';
-            } else {
-              synth.pause();
-              pauseBtn.textContent = '▶️ Resume';
-            }
-          }
-        });
-        // Listen for pause/resume events to update button text
-        window.speechSynthesis.addEventListener('pause', () => {
-          pauseBtn.textContent = '▶️ Resume';
-        });
-        window.speechSynthesis.addEventListener('resume', () => {
-          pauseBtn.textContent = '⏸️ Pause';
-        });
-        stopBtn.addEventListener('click', () => {
-          if (synth.speaking) synth.cancel();
-        });
+
+  // TTS controls: Play, Pause, Stop (English only)
+  let utterance = null;
+  const synth = window.speechSynthesis;
+  const playBtn = dlg.querySelector('#narrativePlayBtn');
+  const pauseBtn = dlg.querySelector('#narrativePauseBtn');
+  const stopBtn = dlg.querySelector('#narrativeStopBtn');
+  playBtn.addEventListener('click', () => {
+    if (synth.speaking) {
+      // Already speaking, resume if paused
+      if (synth.paused) synth.resume();
+      return;
+    }
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = m.blurb;
+    let text = tempDiv.textContent.trim();
+    utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en';
+    // Use best English voice
+    let voices = synth.getVoices();
+    let enVoice = voices.find(v => v.lang.startsWith('en'));
+    if (enVoice) utterance.voice = enVoice;
+    synth.speak(utterance);
+  });
+  pauseBtn.addEventListener('click', () => {
+    if (synth.speaking) {
+      if (synth.paused) {
+        synth.resume();
+        pauseBtn.textContent = '⏸️ Pause';
+      } else {
+        synth.pause();
+        pauseBtn.textContent = '▶️ Resume';
+      }
+    }
+  });
+  // Listen for pause/resume events to update button text
+  window.speechSynthesis.addEventListener('pause', () => {
+    pauseBtn.textContent = '▶️ Resume';
+  });
+  window.speechSynthesis.addEventListener('resume', () => {
+    pauseBtn.textContent = '⏸️ Pause';
+  });
+  stopBtn.addEventListener('click', () => {
+    if (synth.speaking) synth.cancel();
+  });
 }
 
 // Search & filter
@@ -370,17 +370,17 @@ function setupNarration(playBtn, text) {
   const controls = document.createElement('div');
   controls.className = 'narration-controls';
   controls.style.display = 'none';
-  
+
   const pauseBtn = document.createElement('button');
   pauseBtn.className = 'btn ghost';
   pauseBtn.textContent = '⏸️ Pause';
-  
+
   const stopBtn = document.createElement('button');
   stopBtn.className = 'btn ghost';
   stopBtn.style.borderColor = '#c73f3f';
   stopBtn.style.color = '#c73f3f';
   stopBtn.textContent = '⏹️ Stop';
-  
+
   controls.appendChild(pauseBtn);
   controls.appendChild(stopBtn);
   playBtn.parentNode.insertBefore(controls, playBtn.nextSibling);
@@ -519,36 +519,36 @@ window.addEventListener('load', () => {
         alert('Speech synthesis not supported in this browser.');
         return;
       }
-      
+
       // Stop any current narration
       if (synth.speaking) {
         synth.cancel();
       }
-      
+
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'en';
       // Use best English voice
       let voices = synth.getVoices();
       let enVoice = voices.find(v => v.lang.startsWith('en'));
       if (enVoice) utterance.voice = enVoice;
-      
+
       // Update button text while speaking
       const btn = e.target;
       const originalText = btn.textContent;
       btn.textContent = '⏸️ Pause';
-      
+
       utterance.onend = () => {
         btn.textContent = originalText;
       };
-      
+
       utterance.onpause = () => {
         btn.textContent = '▶️ Resume';
       };
-      
+
       utterance.onresume = () => {
         btn.textContent = '⏸️ Pause';
       };
-      
+
       btn.onclick = () => {
         if (synth.speaking && !synth.paused) {
           synth.pause();
@@ -556,8 +556,71 @@ window.addEventListener('load', () => {
           synth.resume();
         }
       };
-      
+
       synth.speak(utterance);
+    }
+  });
+});
+
+// Hamburger dropdown toggle for mobile nav
+document.addEventListener('DOMContentLoaded', function () {
+  const toggle = document.getElementById("chatbot-toggle");
+  const windowBox = document.getElementById("chatbot-window");
+  const input = document.getElementById("chatbot-input");
+  const messages = document.getElementById("chatbot-messages");
+
+  const closeBtn = document.getElementById("chatbot-close");
+
+  toggle.onclick = () => {
+    windowBox.style.display = windowBox.style.display === "none" ? "flex" : "none";
+  };
+
+  closeBtn.onclick = () => {
+    windowBox.style.display = "none";
+  };
+
+  input.addEventListener("keypress", function (e) {
+    if (e.key === "Enter" && input.value.trim() !== "") {
+      let userMsg = input.value;
+      messages.innerHTML += `<div class="message user"><b>You:</b> ${userMsg}</div>`;
+
+      // Simple bot responses
+      let botReply = "I don’t know about that. Try asking about Rumtek, Enchey, Pelling, etc.";
+      if (userMsg.toLowerCase().includes("rumtek") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places near Rumtek Fambong Lho Sanctuary, Saramsa Garden, Hanuman Tok, Tashi View Point.";
+      if (userMsg.toLowerCase().includes("enchey") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places near Enchey is  Ganesh Tok, Bakthang Waterfalls, Himalayan Zoo.";
+      if (userMsg.toLowerCase().includes("pemayangtse") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places near Pemayangtse is Rabdentse Ruins, Khecheopalri Lake, Singshore Bridge.";
+      if (userMsg.toLowerCase().includes("tashiding") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places nearTashiding is Kanchenjunga Falls, Dubdi Monastery, Rabdentse Ruins.";
+      if (userMsg.toLowerCase().includes("ralang") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places nearRalang is Ravangla Buddha Park and scenic villages.";
+      if (userMsg.toLowerCase().includes("phodong") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places near Phodong is Labrang Monastery and North Sikkim routes.";
+      if (userMsg.toLowerCase().includes("rumtek") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Restaurants near Rumtek Monastery:</p>
+        <p>1. Hotel Sonam Delek Restaurant</p>
+        <p>2. Rumtek View Restaurant</p>
+        <p>3. Karma Restaurant</p>`
+      if (userMsg.toLowerCase().includes("enchey") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Restaurants near Enchey Monastery:</p>
+        <p>1. The Square Restaurant</p>
+        <p>2. Baker's Cafe</p>
+        <p>3. Roll House</p>`
+      if (userMsg.toLowerCase().includes("pemayangtse") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Restaurants near Pemayangtse Monastery:</p>
+        <p>1. Norbuling Restaurant</p>
+        <p>2. Mountain View Restaurant</p>
+        <p>3. Local Tibetan Eatery</p>`
+      if (userMsg.toLowerCase().includes("tashiding") && userMsg.toLowerCase().includes("hotels")) botReply = ` <p>Restaurants near Tashiding Monastery:</p>
+        <p>1. Tashiding Local Restaurant</p>
+        <p>2. Buddhist Kitchen</p>
+        <p>3. Sikkimese Home Dining</p>`
+      if (userMsg.toLowerCase().includes("ralang") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Restaurants near Ralang Monastery:</p>
+        <p>1. Ralang View Restaurant</p>
+        <p>2. Mountain Top Cafe</p>
+        <p>3. Himalayan Flavors</p>`
+      if (userMsg.toLowerCase().includes("phodong") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Hotels near Phodong Monastery:</p>
+<p>1. The Mansarovar Hotel & Banquet</p>
+<p>2. Days Inn by Wyndham Gangtok</p>
+<p>3. Lemon Tree Hotel, Gangtok.</p>
+<p>4. Rufina Pinasa Residency </p>`
+
+      messages.innerHTML += `<div class="message bot"><b>Bot:</b> ${botReply}</div>`;
+      messages.scrollTop = messages.scrollHeight;
+      input.value = "";
     }
   });
 });
