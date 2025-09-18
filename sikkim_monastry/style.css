@@ -643,6 +643,9 @@
         padding: 1.5rem;
     }
 }
+.image360{
+    border-radius: 20px;
+}
 
 /* -----------------------------
        Impact Timeline
@@ -855,3 +858,4 @@ footer {
 .carousel img.active {
   opacity: 1;
 }
+

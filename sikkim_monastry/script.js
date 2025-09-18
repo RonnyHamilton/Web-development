@@ -57,7 +57,8 @@ const MONASTERIES = [
             <li>To witness spiritual rituals and chants that echo centuries of tradition.</li>
             <li>To enjoy the serene surroundings, panoramic views, and the calming presence of monks at prayer.</li>
           </ul>
-          <p>Rumtek is not just a monastery — it’s a living museum of Buddhist culture, a place where history and spirituality come alive.</p>`,
+          <p>Rumtek is not just a monastery — it’s a living museum of Buddhist culture, a place where history and spirituality come alive.</p>
+          `,
   },
   {
     name: 'Pemayangtse Monastery',
@@ -225,6 +226,7 @@ function render(list) {
       cr.appendChild(span);
     });
 
+
     const views = node.querySelector('[data-views]');
     views.href = m.view360; views.setAttribute('aria-label', `Open 360 for ${m.name}`);
     const map = node.querySelector('[data-map]');
@@ -233,6 +235,44 @@ function render(list) {
       map.style.display = '';
     } else if (map) {
       map.style.display = 'none';
+    }
+
+    // Add Interior button
+    const actions = node.querySelector('.actions');
+    if (actions) {
+      const interiorBtn = document.createElement('button');
+      interiorBtn.className = 'btn ghost';
+      interiorBtn.textContent = 'Interior';
+      interiorBtn.setAttribute('type', 'button');
+      interiorBtn.style.marginLeft = '0.5rem';
+      // Placeholder click event (customize as needed)
+      interiorBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Create modal dialog for 360° interior view
+        const dlg = document.createElement('dialog');
+        dlg.innerHTML = `
+          <div class="modal-head">
+            <strong>${m.name} – Interior</strong>
+            <button class="btn ghost" data-close>Close</button>
+          </div>
+          <div class="modal-body" style="display:flex;justify-content:center;align-items:center;min-height:60vh;width:100%;background:linear-gradient(135deg,#f8fafc 0%,#e0e7ef 100%);padding:2rem 0;">
+            <iframe width="1200" height="700" title="Panorama Viewer" scrolling="no" allowfullscreen style="border-radius:18px;border:none;box-shadow:0 4px 32px rgba(0,0,0,0.18);background:#222;max-width:95vw;max-height:70vh;" src="https://renderstuff.com/tools/360-panorama-web-viewer-embed/?image=https://l13.alamy.com/360/WKMJD0/lviv-ukraine-august-2019-full-spherical-seamless-hdri-panorama-360-degrees-inside-interior-of-old-church-and-onuphrius-monastery-in-equirectangula-WKMJD0.jpg"></iframe>
+          </div>
+        `;
+        document.body.appendChild(dlg);
+        dlg.showModal();
+        dlg.querySelector('[data-close]').addEventListener('click', () => {
+          dlg.close();
+          dlg.remove();
+        });
+        dlg.addEventListener('click', (evt) => {
+          if (evt.target === dlg) {
+            dlg.close();
+            dlg.remove();
+          }
+        });
+      });
+      actions.appendChild(interiorBtn);
     }
 
     // More modal
