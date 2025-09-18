@@ -58,7 +58,7 @@ const MONASTERIES = [
             <li>To enjoy the serene surroundings, panoramic views, and the calming presence of monks at prayer.</li>
           </ul>
           <p>Rumtek is not just a monastery — it’s a living museum of Buddhist culture, a place where history and spirituality come alive.</p>
-          `,
+          s`,
   },
   {
     name: 'Pemayangtse Monastery',
@@ -226,7 +226,6 @@ function render(list) {
       cr.appendChild(span);
     });
 
-
     const views = node.querySelector('[data-views]');
     views.href = m.view360; views.setAttribute('aria-label', `Open 360 for ${m.name}`);
     const map = node.querySelector('[data-map]');
@@ -235,44 +234,6 @@ function render(list) {
       map.style.display = '';
     } else if (map) {
       map.style.display = 'none';
-    }
-
-    // Add Interior button
-    const actions = node.querySelector('.actions');
-    if (actions) {
-      const interiorBtn = document.createElement('button');
-      interiorBtn.className = 'btn ghost';
-      interiorBtn.textContent = 'Interior';
-      interiorBtn.setAttribute('type', 'button');
-      interiorBtn.style.marginLeft = '0.5rem';
-      // Placeholder click event (customize as needed)
-      interiorBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        // Create modal dialog for 360° interior view
-        const dlg = document.createElement('dialog');
-        dlg.innerHTML = `
-          <div class="modal-head">
-            <strong>${m.name} – Interior</strong>
-            <button class="btn ghost" data-close>Close</button>
-          </div>
-          <div class="modal-body" style="display:flex;justify-content:center;align-items:center;min-height:60vh;width:100%;background:linear-gradient(135deg,#f8fafc 0%,#e0e7ef 100%);padding:2rem 0;">
-            <iframe width="1200" height="700" title="Panorama Viewer" scrolling="no" allowfullscreen style="border-radius:18px;border:none;box-shadow:0 4px 32px rgba(0,0,0,0.18);background:#222;max-width:95vw;max-height:70vh;" src="https://renderstuff.com/tools/360-panorama-web-viewer-embed/?image=https://l13.alamy.com/360/WKMJD0/lviv-ukraine-august-2019-full-spherical-seamless-hdri-panorama-360-degrees-inside-interior-of-old-church-and-onuphrius-monastery-in-equirectangula-WKMJD0.jpg"></iframe>
-          </div>
-        `;
-        document.body.appendChild(dlg);
-        dlg.showModal();
-        dlg.querySelector('[data-close]').addEventListener('click', () => {
-          dlg.close();
-          dlg.remove();
-        });
-        dlg.addEventListener('click', (evt) => {
-          if (evt.target === dlg) {
-            dlg.close();
-            dlg.remove();
-          }
-        });
-      });
-      actions.appendChild(interiorBtn);
     }
 
     // More modal
@@ -626,53 +587,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Simple bot responses
       let botReply = "I don’t know about that. Try asking about Rumtek, Enchey, Pelling, etc.";
-      if (userMsg.toLowerCase().includes("rumtek") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places near Rumtek Fambong Lho Sanctuary, Saramsa Garden, Hanuman Tok, Tashi View Point.";
-      if (userMsg.toLowerCase().includes("enchey") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places near Enchey is  Ganesh Tok, Bakthang Waterfalls, Himalayan Zoo.";
-      if (userMsg.toLowerCase().includes("pemayangtse") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places near Pemayangtse is Rabdentse Ruins, Khecheopalri Lake, Singshore Bridge.";
-      if (userMsg.toLowerCase().includes("tashiding") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places nearTashiding is Kanchenjunga Falls, Dubdi Monastery, Rabdentse Ruins.";
-      if (userMsg.toLowerCase().includes("ralang") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places nearRalang is Ravangla Buddha Park and scenic villages.";
-      if (userMsg.toLowerCase().includes("phodong") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places near Phodong is Labrang Monastery and North Sikkim routes.";
-      if (userMsg.toLowerCase().includes("rumtek") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Restaurants near Rumtek Monastery:</p>
-        <p>1. Hotel Sonam Delek Restaurant</p>
-        <p>2. Rumtek View Restaurant</p>
-        <p>3. Karma Restaurant</p>`
-      if (userMsg.toLowerCase().includes("enchey") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Restaurants near Enchey Monastery:</p>
-        <p>1. The Square Restaurant</p>
-        <p>2. Baker's Cafe</p>
-        <p>3. Roll House</p>`
-      if (userMsg.toLowerCase().includes("pemayangtse") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Restaurants near Pemayangtse Monastery:</p>
-        <p>1. Norbuling Restaurant</p>
-        <p>2. Mountain View Restaurant</p>
-        <p>3. Local Tibetan Eatery</p>`
-      if (userMsg.toLowerCase().includes("tashiding") && userMsg.toLowerCase().includes("hotels")) botReply = ` <p>Restaurants near Tashiding Monastery:</p>
-        <p>1. Tashiding Local Restaurant</p>
-        <p>2. Buddhist Kitchen</p>
-        <p>3. Sikkimese Home Dining</p>`
-      if (userMsg.toLowerCase().includes("ralang") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Restaurants near Ralang Monastery:</p>
-        <p>1. Ralang View Restaurant</p>
-        <p>2. Mountain Top Cafe</p>
-        <p>3. Himalayan Flavors</p>`
-      if (userMsg.toLowerCase().includes("phodong") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Hotels near Phodong Monastery:</p>
-      
-<p>1. The Mansarovar Hotel & Banquet</p>
-<p>2. Days Inn by Wyndham Gangtok</p>
-<p>3. Lemon Tree Hotel, Gangtok.</p>
-<p>4. Rufina Pinasa Residency </p>`
-
-      if (userMsg.toLowerCase().includes("hello")) botReply = `<p>Hello I am here to assist you</p>`
-      if (userMsg.toLowerCase().includes("rumtek") && userMsg.toLowerCase().includes("information")) botReply = "Rumtek Monastery is a significant Tibetan Buddhist monastery in Sikkim, India, serving as the seat of the Karmapa Lama and a center for the Kagyu tradition. Located near Gangtok, it is known for its stunning architecture, rare Buddhist artifacts, and beautiful Tibetan murals. The monastery offers a serene spiritual experience and also features a garden, making it a popular destination for art and culture enthusiasts.";
-      if (userMsg.toLowerCase().includes("enchey") && userMsg.toLowerCase().includes("information")) botReply = "The Enchey Monastery was established in 1909 above Gangtok, the capital city of Sikkim in the Northeastern Indian state. It belongs to the Nyingma order of Vajrayana Buddhism. The monastery built around the then small hamlet of Gangtok became a religious centre.";
-      if (userMsg.toLowerCase().includes("pemayangtse") && userMsg.toLowerCase().includes("information")) botReply = "The Pemayangtse Monastery is a Buddhist monastery in Pemayangtse, near Gyalshing city in Gyalshing district in the northeastern Indian state of Sikkim, located 6 km from Gyalshing city, the district headquarters, 110 km west of Gangtok";
-      if (userMsg.toLowerCase().includes("tashiding") && userMsg.toLowerCase().includes("information")) botReply = "Tashiding Monastery is a Buddhist monastery of the Nyingma sect of Tibetan Buddhism in Tashiding, about 27 km from Gyalshing city in Gyalshing district in northeastern Indian state of Sikkim. which is the most sacred and holiest monasteries in Sikkim.";
-      if (userMsg.toLowerCase().includes("ralang") && userMsg.toLowerCase().includes("information")) botReply = "New Ralang Monastery or Ralong Palchen Choling is a Buddhist monastery of the Kagyu sect of Tibetan Buddhism in southern Sikkim, northeastern India. It is located six kilometres from Ravangla. Ralang Monastery has an extensive collection of paintings and thangkas.";
-      if (userMsg.toLowerCase().includes("phodong") && userMsg.toLowerCase().includes("information")) botReply = "Phodong Monastery is a Buddhist monastery in Sikkim, India. It is located 28 kilometres from Gangtok. It was built in the early 18th century but an older monastery had pre-existed the current one.";
-       if (userMsg.toLowerCase().includes("hello")) botReply = `<p>Hello I am here to assist you</p>`
-      if (userMsg.toLowerCase().includes("rumtek") ) botReply = "Rumtek Monastery is a significant Tibetan Buddhist monastery in Sikkim, India, serving as the seat of the Karmapa Lama and a center for the Kagyu tradition. Located near Gangtok, it is known for its stunning architecture, rare Buddhist artifacts, and beautiful Tibetan murals. The monastery offers a serene spiritual experience and also features a garden, making it a popular destination for art and culture enthusiasts.";
-      if (userMsg.toLowerCase().includes("enchey") ) botReply = "The Enchey Monastery was established in 1909 above Gangtok, the capital city of Sikkim in the Northeastern Indian state. It belongs to the Nyingma order of Vajrayana Buddhism. The monastery built around the then small hamlet of Gangtok became a religious centre.";
-      if (userMsg.toLowerCase().includes("pemayangtse") ) botReply = "The Pemayangtse Monastery is a Buddhist monastery in Pemayangtse, near Gyalshing city in Gyalshing district in the northeastern Indian state of Sikkim, located 6 km from Gyalshing city, the district headquarters, 110 km west of Gangtok";
-      if (userMsg.toLowerCase().includes("tashiding")) botReply = "Tashiding Monastery is a Buddhist monastery of the Nyingma sect of Tibetan Buddhism in Tashiding, about 27 km from Gyalshing city in Gyalshing district in northeastern Indian state of Sikkim. which is the most sacred and holiest monasteries in Sikkim.";
-      if (userMsg.toLowerCase().includes("ralang") ) botReply = "New Ralang Monastery or Ralong Palchen Choling is a Buddhist monastery of the Kagyu sect of Tibetan Buddhism in southern Sikkim, northeastern India. It is located six kilometres from Ravangla. Ralang Monastery has an extensive collection of paintings and thangkas.";
-      if (userMsg.toLowerCase().includes("phodong") ) botReply = "Phodong Monastery is a Buddhist monastery in Sikkim, India. It is located 28 kilometres from Gangtok. It was built in the early 18th century but an older monastery had pre-existed the current one.";
+  if (userMsg.toLowerCase().includes("rumtek") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Restaurants near Rumtek Monastery:</p><p>1. Hotel Sonam Delek Restaurant</p><p>2. Rumtek View Restaurant</p><p>3. Karma Restaurant</p>`;
+  else if (userMsg.toLowerCase().includes("enchey") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Restaurants near Enchey Monastery:</p><p>1. The Square Restaurant</p><p>2. Baker's Cafe</p><p>3. Roll House</p>`;
+  else if (userMsg.toLowerCase().includes("pemayangtse") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Restaurants near Pemayangtse Monastery:</p><p>1. Norbuling Restaurant</p><p>2. Mountain View Restaurant</p><p>3. Local Tibetan Eatery</p>`;
+  else if (userMsg.toLowerCase().includes("tashiding") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Restaurants near Tashiding Monastery:</p><p>1. Tashiding Local Restaurant</p><p>2. Buddhist Kitchen</p><p>3. Sikkimese Home Dining</p>`;
+  else if (userMsg.toLowerCase().includes("ralang") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Restaurants near Ralang Monastery:</p><p>1. Ralang View Restaurant</p><p>2. Mountain Top Cafe</p><p>3. Himalayan Flavors</p>`;
+  else if (userMsg.toLowerCase().includes("phodong") && userMsg.toLowerCase().includes("hotels")) botReply = `<p>Hotels near Phodong Monastery:</p><p>1. The Mansarovar Hotel & Banquet</p><p>2. Days Inn by Wyndham Gangtok</p><p>3. Lemon Tree Hotel, Gangtok.</p><p>4. Rufina Pinasa Residency </p>`;
+  else if (userMsg.toLowerCase().includes("rumtek") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places near Rumtek Fambong Lho Sanctuary, Saramsa Garden, Hanuman Tok, Tashi View Point.";
+  else if (userMsg.toLowerCase().includes("enchey") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places near Enchey is  Ganesh Tok, Bakthang Waterfalls, Himalayan Zoo.";
+  else if (userMsg.toLowerCase().includes("pemayangtse") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places near Pemayangtse is Rabdentse Ruins, Khecheopalri Lake, Singshore Bridge.";
+  else if (userMsg.toLowerCase().includes("tashiding") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places nearTashiding is Kanchenjunga Falls, Dubdi Monastery, Rabdentse Ruins.";
+  else if (userMsg.toLowerCase().includes("ralang") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places nearRalang is Ravangla Buddha Park and scenic villages.";
+  else if (userMsg.toLowerCase().includes("phodong") && userMsg.toLowerCase().includes("tourist")) botReply = "Tourist places near Phodong is Labrang Monastery and North Sikkim routes.";
+  else if (userMsg.toLowerCase().includes("rumtek") && userMsg.toLowerCase().includes("information")) botReply = "Rumtek Monastery is a significant Tibetan Buddhist monastery in Sikkim, India, serving as the seat of the Karmapa Lama and a center for the Kagyu tradition. Located near Gangtok, it is known for its stunning architecture, rare Buddhist artifacts, and beautiful Tibetan murals. The monastery offers a serene spiritual experience and also features a garden, making it a popular destination for art and culture enthusiasts.";
+  else if (userMsg.toLowerCase().includes("enchey") && userMsg.toLowerCase().includes("information")) botReply = "The Enchey Monastery was established in 1909 above Gangtok, the capital city of Sikkim in the Northeastern Indian state. It belongs to the Nyingma order of Vajrayana Buddhism. The monastery built around the then small hamlet of Gangtok became a religious centre.";
+  else if (userMsg.toLowerCase().includes("pemayangtse") && userMsg.toLowerCase().includes("information")) botReply = "The Pemayangtse Monastery is a Buddhist monastery in Pemayangtse, near Gyalshing city in Gyalshing district in the northeastern Indian state of Sikkim, located 6 km from Gyalshing city, the district headquarters, 110 km west of Gangtok";
+  else if (userMsg.toLowerCase().includes("tashiding") && userMsg.toLowerCase().includes("information")) botReply = "Tashiding Monastery is a Buddhist monastery of the Nyingma sect of Tibetan Buddhism in Tashiding, about 27 km from Gyalshing city in Gyalshing district in northeastern Indian state of Sikkim. which is the most sacred and holiest monasteries in Sikkim.";
+  else if (userMsg.toLowerCase().includes("ralang") && userMsg.toLowerCase().includes("information")) botReply = "New Ralang Monastery or Ralong Palchen Choling is a Buddhist monastery of the Kagyu sect of Tibetan Buddhism in southern Sikkim, northeastern India. It is located six kilometres from Ravangla. Ralang Monastery has an extensive collection of paintings and thangkas.";
+  else if (userMsg.toLowerCase().includes("phodong") && userMsg.toLowerCase().includes("information")) botReply = "Phodong Monastery is a Buddhist monastery in Sikkim, India. It is located 28 kilometres from Gangtok. It was built in the early 18th century but an older monastery had pre-existed the current one.";
+  else if (userMsg.toLowerCase().includes("hello")) botReply = `<p>Hello I am here to assist you</p>`;
+  else if (userMsg.toLowerCase().includes("rumtek")) botReply = "Rumtek Monastery is a significant Tibetan Buddhist monastery in Sikkim, India, serving as the seat of the Karmapa Lama and a center for the Kagyu tradition. Located near Gangtok, it is known for its stunning architecture, rare Buddhist artifacts, and beautiful Tibetan murals. The monastery offers a serene spiritual experience and also features a garden, making it a popular destination for art and culture enthusiasts.";
+  else if (userMsg.toLowerCase().includes("enchey")) botReply = "The Enchey Monastery was established in 1909 above Gangtok, the capital city of Sikkim in the Northeastern Indian state. It belongs to the Nyingma order of Vajrayana Buddhism. The monastery built around the then small hamlet of Gangtok became a religious centre.";
+  else if (userMsg.toLowerCase().includes("pemayangtse")) botReply = "The Pemayangtse Monastery is a Buddhist monastery in Pemayangtse, near Gyalshing city in Gyalshing district in the northeastern Indian state of Sikkim, located 6 km from Gyalshing city, the district headquarters, 110 km west of Gangtok";
+  else if (userMsg.toLowerCase().includes("tashiding")) botReply = "Tashiding Monastery is a Buddhist monastery of the Nyingma sect of Tibetan Buddhism in Tashiding, about 27 km from Gyalshing city in Gyalshing district in northeastern Indian state of Sikkim. which is the most sacred and holiest monasteries in Sikkim.";
+  else if (userMsg.toLowerCase().includes("ralang")) botReply = "New Ralang Monastery or Ralong Palchen Choling is a Buddhist monastery of the Kagyu sect of Tibetan Buddhism in southern Sikkim, northeastern India. It is located six kilometres from Ravangla. Ralang Monastery has an extensive collection of paintings and thangkas.";
+  else if (userMsg.toLowerCase().includes("phodong")) botReply = "Phodong Monastery is a Buddhist monastery in Sikkim, India. It is located 28 kilometres from Gangtok. It was built in the early 18th century but an older monastery had pre-existed the current one.";
       messages.innerHTML += `<div class="message bot"><b>Bot:</b> ${botReply}</div>`;
       messages.scrollTop = messages.scrollHeight;
       input.value = "";
