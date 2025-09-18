@@ -324,10 +324,10 @@
       <p class="sub">Let us know if you plan to visit! Submit your details and we'll keep you updated about events, travel tips, and more.</p>
     </div>
     <form id="interestForm" style="max-width:480px;margin:auto;display:flex;flex-direction:column;gap:1.1rem;">
-      <input type="text" name="name" placeholder="Your Name" required style="padding:0.8rem;border-radius:10px;border:1px solid #ccc;">
-      <input type="email" name="email" placeholder="Your Email" required style="padding:0.8rem;border-radius:10px;border:1px solid #ccc;">
-      <input type="tel" name="phone" placeholder="Phone (optional)" style="padding:0.8rem;border-radius:10px;border:1px solid #ccc;">
-      <textarea name="message" placeholder="Message (optional)" rows="3" style="padding:0.8rem;border-radius:10px;border:1px solid #ccc;"></textarea>
+  <input type="text" name="name" placeholder="Your Name" required style="padding:0.8rem;border-radius:10px;border:1px solid #ccc;">
+  <input type="email" name="email" placeholder="Your Email" required style="padding:0.8rem;border-radius:10px;border:1px solid #ccc;">
+  <input type="tel" name="phone" placeholder="Phone (optional)" style="padding:0.8rem;border-radius:10px;border:1px solid #ccc;">
+  <textarea name="message" placeholder="Review (optional)" rows="3" style="padding:0.8rem;border-radius:10px;border:1px solid #ccc;"></textarea>
       <button class="btn" type="submit">Submit Interest</button>
       <div id="interestStatus" style="margin-top:0.5rem;font-weight:600;"></div>
     </form>
@@ -398,11 +398,14 @@
       const status = document.getElementById('interestStatus');
       status.textContent = '';
       const data = {
-        name: form.name.value.trim(),
-        email: form.email.value.trim(),
-        phone: form.phone.value.trim(),
-        message: form.message.value.trim()
-      };
+  name: form.name.value.trim(),
+  email: form.email.value.trim(),
+  phone: form.phone.value.trim(),
+  reason: form.reason.value.trim(),
+  message: form.message.value.trim()
+ };
+      console.log('Submitting visitor data:', data);
+      
       try {
         const res = await fetch('http://localhost:4000/api/visitors', {
           method: 'POST',
