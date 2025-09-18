@@ -480,6 +480,7 @@
 }
 .icon1 img{
     width: 330px;
+    border-radius: 20px;
 }
 .card h3 {
     margin: .8rem 0 .2rem
