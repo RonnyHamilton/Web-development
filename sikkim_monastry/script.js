@@ -45,7 +45,7 @@ const MONASTERIES = [
     // Public Street View & Map links (open externally)
     view360: 'https://maps.app.goo.gl/9iYh1nfsjWfUJZAG6?g_st=aw',
     map: 'https://maps.app.goo.gl/s6wFBCbeTY4oUUoF6',
-    image: 'rumtek/rumtek-monastery.jpeg',
+    image: 'rumtek/2.jpeg',
     blurb: `<p>Perched on a quiet hilltop, overlooking the lush valleys of Sikkim, Rumtek Monastery is more than just a spiritual center — it’s a journey into Tibetan tradition, history, and culture.</p>
           <p>Originally founded in 1734 by Wangchuk Dorje, the 9th Karmapa, with the royal patronage of the Chogyals of Sikkim, the monastery has long been the principal seat of the Kagyu school of Tibetan Buddhism. For centuries, it stood as a symbol of peace and prayer — until time and neglect left it in ruins.</p>
           <p>The revival of Rumtek began in the 1950s, when His Holiness the 16th Gyalwa Karmapa, Rangjung Rigpe Dorje, visited the site during a pilgrimage. After escaping Tibet in 1959, he eventually chose Rumtek as his new seat. With support from the 11th Chogyal of Sikkim, Tashi Namgyal, who donated 74 acres of land, and encouragement from India’s Prime Minister Jawaharlal Nehru, the monastery’s restoration became a community effort — with locals contributing labor, food, and clothing.</p>
@@ -65,7 +65,7 @@ const MONASTERIES = [
     lineage: ['Nyingma', 'Tibetan'],
     view360: 'https://maps.app.goo.gl/DxeNbE2CFB3pi2kS6?g_st=aw',
     map: 'https://maps.app.goo.gl/AyfYGsXqP1YP4CNf7?g_st=aw',
-    image: 'pemayangste/pemayangtse-monastery.jpeg',
+    image: 'pemayangste/3.jpeg',
     blurb: ``,
   },
   {
@@ -97,7 +97,7 @@ const MONASTERIES = [
     lineage: ['Nyingma'],
     view360: 'https://maps.app.goo.gl/XxAW3Q7jEm6AiWRL6?g_st=ac',
     map: 'https://maps.app.goo.gl/i8PTpuo2mzFm2BNF8?g_st=aw',
-    image: 'enchey/enchey-monastery.jpeg',
+    image: 'enchey/2.jpeg',
     blurb: `
           <h4>Overview</h4>
           <p>Set on a gentle ridge above <strong>Pelling</strong>, Pemayangtse (meaning “Perfect Sublime Lotus”) is one of Sikkim’s oldest
@@ -122,7 +122,7 @@ const MONASTERIES = [
     lineage: ['Kagyu'],
     view360: 'https://maps.app.goo.gl/pJpfw5a6CTViyNgx5?g_st=ac',
     map: 'https://maps.app.goo.gl/WhhvLYPxnfqkqH8g9',
-    image: 'ralang/ralang-monastery.jpg',
+    image: 'ralang/3.jpg',
     blurb: `
           <h4>Overview</h4>
           <p>Ralang (near <strong>Ravangla</strong>) is an important seat of the <em>Kagyu</em> tradition. The area includes the older complex
@@ -145,7 +145,7 @@ const MONASTERIES = [
     lineage: ['Kagyu'],
     view360: 'https://maps.app.goo.gl/chNWhLQHh8TLHjCg9?g_st=ac',
     map: 'https://maps.app.goo.gl/eLZFGEDtW8jFJ7ne7',
-    image: 'phodong/phodong-monastery.jpeg',
+    image: 'phodong/2.jpeg',
     blurb: `
           <h4>Overview</h4>
           <p>Phodong, in North Sikkim, is a prominent <em>Kagyu</em> monastery with a peaceful setting and vibrant mural art.</p>
@@ -618,12 +618,30 @@ document.addEventListener('DOMContentLoaded', function () {
 <p>2. Days Inn by Wyndham Gangtok</p>
 <p>3. Lemon Tree Hotel, Gangtok.</p>
 <p>4. Rufina Pinasa Residency </p>`
-        if (userMsg.toLowerCase().includes("hello")) botReply = `<p>Hello I am here to assist you</p>`
+
+      if (userMsg.toLowerCase().includes("hello")) botReply = `<p>Hello I am here to assist you</p>`
+      if (userMsg.toLowerCase().includes("rumtek") && userMsg.toLowerCase().includes("information")) botReply = "Rumtek Monastery is a significant Tibetan Buddhist monastery in Sikkim, India, serving as the seat of the Karmapa Lama and a center for the Kagyu tradition. Located near Gangtok, it is known for its stunning architecture, rare Buddhist artifacts, and beautiful Tibetan murals. The monastery offers a serene spiritual experience and also features a garden, making it a popular destination for art and culture enthusiasts.";
+      if (userMsg.toLowerCase().includes("enchey") && userMsg.toLowerCase().includes("information")) botReply = "The Enchey Monastery was established in 1909 above Gangtok, the capital city of Sikkim in the Northeastern Indian state. It belongs to the Nyingma order of Vajrayana Buddhism. The monastery built around the then small hamlet of Gangtok became a religious centre.";
+      if (userMsg.toLowerCase().includes("pemayangtse") && userMsg.toLowerCase().includes("information")) botReply = "The Pemayangtse Monastery is a Buddhist monastery in Pemayangtse, near Gyalshing city in Gyalshing district in the northeastern Indian state of Sikkim, located 6 km from Gyalshing city, the district headquarters, 110 km west of Gangtok";
+      if (userMsg.toLowerCase().includes("tashiding") && userMsg.toLowerCase().includes("information")) botReply = "Tashiding Monastery is a Buddhist monastery of the Nyingma sect of Tibetan Buddhism in Tashiding, about 27 km from Gyalshing city in Gyalshing district in northeastern Indian state of Sikkim. which is the most sacred and holiest monasteries in Sikkim.";
+      if (userMsg.toLowerCase().includes("ralang") && userMsg.toLowerCase().includes("information")) botReply = "New Ralang Monastery or Ralong Palchen Choling is a Buddhist monastery of the Kagyu sect of Tibetan Buddhism in southern Sikkim, northeastern India. It is located six kilometres from Ravangla. Ralang Monastery has an extensive collection of paintings and thangkas.";
+      if (userMsg.toLowerCase().includes("phodong") && userMsg.toLowerCase().includes("information")) botReply = "Phodong Monastery is a Buddhist monastery in Sikkim, India. It is located 28 kilometres from Gangtok. It was built in the early 18th century but an older monastery had pre-existed the current one.";
       messages.innerHTML += `<div class="message bot"><b>Bot:</b> ${botReply}</div>`;
       messages.scrollTop = messages.scrollHeight;
       input.value = "";
     }
-   
+
   });
 });
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll(".carousel img");
+  let index = 0;
+
+  setInterval(() => {
+    images[index].classList.remove("active");
+    index = (index + 1) % images.length;
+    images[index].classList.add("active");
+  }, 4000); // change every 4s
+});

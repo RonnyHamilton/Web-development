@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Monastery360 – Digitize & Showcase Monasteries of Sikkim</title>
-  <meta name="description" content="Immersive, performance-first landing page to explore Sikkim monasteries with history, maps and optional 360° links." />
+  <meta name="description"
+    content="Immersive, performance-first landing page to explore Sikkim monasteries with history, maps and optional 360° links." />
   <link rel="stylesheet" href="style.css" class="css">
   <link rel="stylesheet" href="chatbot.css">
 </head>
+
 <body>
   <!-- NAVIGATION -->
   <nav class="nav container">
@@ -28,16 +31,26 @@
     <div class="hero-wrap">
       <div>
         <span class="tag">Smart India Hackathon 2025</span>
-        <h1>Digitize & Showcase <span style="color:var(--accent)">Monasteries of Sikkim</span> with immersive storytelling</h1>
-        <p>Explore living heritage through <strong>virtual walk-throughs</strong>, curated histories, interactive maps and community powered archives. Built with a performance-first, privacy-friendly design that works anywhere—no logins, no trackers.</p>
+        <h1>Digitize & Showcase <span style="color:var(--accent)">Monasteries of Sikkim</span> with immersive
+          storytelling</h1>
+        <p>Explore living heritage through <strong>virtual walk-throughs</strong>, curated histories, interactive maps
+          and community powered archives. Built with a performance-first, privacy-friendly design that works anywhere—no
+          logins, no trackers.</p>
         <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1.2rem">
           <a class="btn" href="#explore">Explore Monasteries</a>
           <button class="btn ghost" id="aboutBtn">About Project</button>
         </div>
       </div>
       <div class="hero-card">
-        <div class="hero-badge tag">New • 2025 Edition</div>
-  
+
+        <div class="carousel">
+          <img src="3d/enchey-monastery.jpg" alt="Enchey Monastery" />
+          <img src="3d/rumtek-monastery.jpg" alt="Rumtek Monastery" />
+          <img src="3d/phodong-monastery.jpg" alt="Phodong Monastery" />
+          <img src="3d/tashiding-monastery.jpg" alt="Tashiding Monastery" />
+          <!-- add as many as you want -->
+
+        </div>
       </div>
     </div>
   </header>
@@ -47,39 +60,47 @@
     <div style="margin-bottom:1rem">
       <div class="kicker">Core features</div>
       <h2 class="title">Immersive, informative and accessible</h2>
-      <p class="sub">Each monastery page blends visuals, verified history, practical travel info and optional <em>external</em> 360° views (opens in a new tab) to keep the site risk-free.</p>
+      <p class="sub">Each monastery page blends visuals, verified history, practical travel info and optional
+        <em>external</em> 360° views (opens in a new tab) to keep the site risk-free.
+      </p>
     </div>
     <div class="grid cols-3">
       <article class="card">
-        <div class="icon">📸</div>
+        <div class="icon1"><img src="features img/streetview.jpg"></div>
         <h3>Virtual 360° (External)</h3>
         <p>Launch Street View links in one click—kept outside the site to avoid embed/network issues.</p>
       </article>
       <article class="card">
-        <div class="icon">📖</div>
+        <div class="icon1"><img src="features img/history.jpg"></div>
         <h3>History & Culture</h3>
         <p>Curated origin stories, founding lineages, festivals and manuscript references.</p>
       </article>
       <article class="card">
-        <div class="icon">🗺️</div>
+        <div class="icon1"><img src="features img/maps.jpeg"></div>
         <h3>Explore by Map</h3>
-        <p>Open-in-Maps buttons for directions without loading external iframes on page.</p>
+        <p>Open-in-Maps buttons for directions</p>
       </article>
     </div>
   </section>
 
   <!-- EXPLORE GRID -->
   <section class="section container" id="explore">
-    <div style="display:flex; align-items:end; justify-content:space-between; gap:1rem; margin-bottom:1rem; flex-wrap:wrap">
+    <div
+      style="display:flex; align-items:end; justify-content:space-between; gap:1rem; margin-bottom:1rem; flex-wrap:wrap">
       <div>
         <div class="kicker">Discover</div>
         <h2 class="title">Sikkim Monasteries</h2>
-        <p class="sub">Sikkim is home to many significant monasteries (Gompas) that are centers of spiritual and cultural life, including the famous Rumtek Monastery, the seat of the Kagyü lineage of Tibetan Buddhism, and the ancient Pemayangtse Monastery. These monasteries, built in distinctive Tibetan architectural style with intricate murals, thangkas, and statues, are located in scenic areas and showcase the deep Buddhist heritage of the state.  
-Major Monasteries 
-.</p>
+        <p class="sub">Sikkim is home to many significant monasteries (Gompas) that are centers of spiritual and
+          cultural life, including the famous Rumtek Monastery, the seat of the Kagyü lineage of Tibetan Buddhism, and
+          the ancient Pemayangtse Monastery. These monasteries, built in distinctive Tibetan architectural style with
+          intricate murals, thangkas, and statues, are located in scenic areas and showcase the deep Buddhist heritage
+          of the state.
+          Major Monasteries
+          .</p>
       </div>
       <div class="filters" role="search">
-        <input id="search" class="search" placeholder="Search by name, region or lineage…" aria-label="Search monasteries"/>
+        <input id="search" class="search" placeholder="Search by name, region or lineage…"
+          aria-label="Search monasteries" />
         <button class="btn ghost" id="showFavs">★ Favorites</button>
       </div>
     </div>
@@ -92,26 +113,36 @@ Major Monasteries
     <div>
       <div class="kicker">Sacred Texts</div>
       <h2 class="title">Ancient Manuscripts & Sacred Texts</h2>
-      <p class="sub">Discover the invaluable collection of Buddhist manuscripts preserved within Sikkim's monasteries, each telling stories of wisdom passed down through generations.</p>
+      <p class="sub">Discover the invaluable collection of Buddhist manuscripts preserved within Sikkim's monasteries,
+        each telling stories of wisdom passed down through generations.</p>
     </div>
     <div class="grid cols-3">
       <article class="card">
-        <div class="icon">📜</div>
+        <div class="icon"><img src="manuscripts/66f2a6851eae3fcb349ef52e_WechatIMG6521-800x533-main-image.jpg"></div>
         <h3>Kangyur Collection</h3>
-        <p>The sacred collection of Buddha's direct teachings, containing over 108 volumes carefully preserved at Rumtek Monastery. Many texts were carried from Tibet during the great migration.</p>
-        <button class="btn ghost manuscript-narrate" data-text="The Kangyur Collection represents the words of Buddha himself, meticulously preserved in over 108 volumes at Rumtek Monastery. These sacred texts were carefully transported from Tibet during the historical migration, representing one of the most complete collections of Buddha's direct teachings in the region. Each volume is handwritten or block-printed on traditional paper, often with gold or silver ink for particularly sacred passages.">🔊 Listen</button>
+        <p>The sacred collection of Buddha's direct teachings, containing over 108 volumes carefully preserved at Rumtek
+          Monastery. Many texts were carried from Tibet during the great migration.</p>
+        <button class="btn ghost manuscript-narrate"
+          data-text="The Kangyur Collection represents the words of Buddha himself, meticulously preserved in over 108 volumes at Rumtek Monastery. These sacred texts were carefully transported from Tibet during the historical migration, representing one of the most complete collections of Buddha's direct teachings in the region. Each volume is handwritten or block-printed on traditional paper, often with gold or silver ink for particularly sacred passages.">🔊
+          Listen</button>
       </article>
       <article class="card">
-        <div class="icon">📚</div>
+        <div class="icon"><img src="manuscripts/cropped-ioltibj1126.jpg"></div>
         <h3>Tengyur Manuscripts</h3>
-        <p>Ancient commentaries and treatises by Indian and Tibetan masters, featuring detailed explanations of Buddhist philosophy, logic, medicine, and arts, housed in various Sikkim monasteries.</p>
-        <button class="btn ghost manuscript-narrate" data-text="The Tengyur Manuscripts are an extensive collection of commentaries and treatises written by renowned Indian and Tibetan Buddhist masters. These texts contain detailed explanations of Buddhist philosophy, logic, traditional medicine, and sacred arts. The manuscripts are distributed across various monasteries in Sikkim, with each monastery specializing in particular aspects of Buddhist scholarship.">🔊 Listen</button>
+        <p>Ancient commentaries and treatises by Indian and Tibetan masters, featuring detailed explanations of Buddhist
+          philosophy, logic, medicine, and arts, housed in various Sikkim monasteries.</p>
+        <button class="btn ghost manuscript-narrate"
+          data-text="The Tengyur Manuscripts are an extensive collection of commentaries and treatises written by renowned Indian and Tibetan Buddhist masters. These texts contain detailed explanations of Buddhist philosophy, logic, traditional medicine, and sacred arts. The manuscripts are distributed across various monasteries in Sikkim, with each monastery specializing in particular aspects of Buddhist scholarship.">🔊
+          Listen</button>
       </article>
       <article class="card">
-        <div class="icon">🗝️</div>
+        <div class="icon"><img src="manuscripts/images.jpeg"></div>
         <h3>Terma Treasures</h3>
-        <p>Hidden spiritual treasures and prophetic texts discovered by tertons (treasure revealers) in sacred sites across Sikkim, including teachings attributed to Guru Rinpoche.</p>
-        <button class="btn ghost manuscript-narrate" data-text="Terma Treasures are sacred texts and relics that were hidden by Guru Rinpoche and other masters for future discovery. These spiritual treasures were concealed during times of strife and are meant to be revealed at specific times by specially destined treasure revealers known as tertons. Sikkim's monasteries house several such discovered termas, containing prophecies and profound spiritual instructions.">🔊 Listen</button>
+        <p>Hidden spiritual treasures and prophetic texts discovered by tertons (treasure revealers) in sacred sites
+          across Sikkim, including teachings attributed to Guru Rinpoche.</p>
+        <button class="btn ghost manuscript-narrate"
+          data-text="Terma Treasures are sacred texts and relics that were hidden by Guru Rinpoche and other masters for future discovery. These spiritual treasures were concealed during times of strife and are meant to be revealed at specific times by specially destined treasure revealers known as tertons. Sikkim's monasteries house several such discovered termas, containing prophecies and profound spiritual instructions.">🔊
+          Listen</button>
       </article>
     </div>
   </section>
@@ -121,7 +152,8 @@ Major Monasteries
     <div>
       <div class="kicker">Event Calendar</div>
       <h2 class="title">Upcoming Monastery Events</h2>
-      <p class="sub">Stay updated with the latest festivals, ceremonies, and special events happening at Sikkim's monasteries. Plan your visit to experience vibrant traditions and spiritual celebrations.</p>
+      <p class="sub">Stay updated with the latest festivals, ceremonies, and special events happening at Sikkim's
+        monasteries. Plan your visit to experience vibrant traditions and spiritual celebrations.</p>
     </div>
     <div class="calendar-grid">
       <article class="event-card">
@@ -160,7 +192,8 @@ Major Monasteries
     <div>
       <div class="kicker">Preservation impact</div>
       <h2 class="title">From documentation to community benefits</h2>
-      <p class="sub">A transparent pipeline ensures cultural assets are respectfully documented and communities are supported.</p>
+      <p class="sub">A transparent pipeline ensures cultural assets are respectfully documented and communities are
+        supported.</p>
     </div>
     <div class="timeline">
       <div class="mile">
@@ -193,13 +226,104 @@ Major Monasteries
       </div>
     </div>
   </section>
+  <!-- ETHNICITY -->
+  <section class="section container" id="ethnicity">
+    <div>
+      <div class="kicker">Ethnicity & Traditions</div>
+      <h2 class="title">Diverse Cultures of Sikkim</h2>
+      <p class="sub">
+        Sikkim’s heritage is shaped by a harmonious blend of communities—
+        primarily the Bhutia, Lepcha, and Nepali ethnic groups—each contributing
+        unique traditions, festivals, attire, and art forms that enrich monastery life.
+      </p>
+    </div>
+    <div class="grid cols-3">
+      <article class="card">
+        <div class="icon1"><img src="ethinicity/lepchas.jpeg" alt="Lepcha community"></div>
+        <h3>Lepcha Traditions</h3>
+        <p>
+          Known as the original inhabitants of Sikkim, the Lepchas practice deep
+          reverence for nature. Their festivals like Tendong Lho Rum Faat celebrate
+          mountain spirits, and their weaving crafts are renowned for natural dyes.
+        </p>
+      </article>
+      <article class="card">
+        <div class="icon1"><img src="ethinicity/bhutia.webp" alt="Bhutia culture"></div>
+        <h3>Bhutia Heritage</h3>
+        <p>
+          The Bhutias brought Tibetan Buddhist traditions to Sikkim. Distinctive
+          attire like the <em>Bakhu</em>, colorful prayer flags, and festivals such as Losar
+          (Tibetan New Year) highlight their cultural legacy tied closely to monasteries.
+        </p>
+      </article>
+      <article class="card">
+        <div class="icon1"><img src="ethinicity/tihar-2.jpg" alt="Nepali traditions"></div>
+        <h3>Nepali Influences</h3>
+        <p>
+          The Nepali community, the largest in Sikkim, contributes vibrant folk dances,
+          festivals like Dasain and Tihar, and agricultural practices. Their traditions
+          have blended with Sikkim’s Buddhist culture over centuries.
+        </p>
+      </article>
+    </div>
+  </section>
+  <!-- GOVERNMENT INITIATIVES -->
+  <section class="section container" id="government">
+    <div style="text-align:center; margin-bottom:1rem">
+      <img src="sikkimgovt.png" id="govt" alt="Government of Sikkim Emblem"
+        style="width:120px; margin-bottom:1rem;border-radius: 20px;">
+      <div class="kicker">Support & Recognition</div>
+      <h2 class="title">Role of the Government of Sikkim</h2>
+      <p class="sub" style="
+  text-align:center; 
+  max-width:800px; 
+  margin:1rem auto 2rem; 
+  font-size:1.1rem; 
+  line-height:1.6; 
+  font-weight:500;
+">
+        The Government of Sikkim has played a pivotal role in safeguarding
+        the rich Buddhist heritage of the state. Through initiatives in
+        <strong>heritage conservation, eco-tourism, and digital innovation</strong>,
+        the government continues to ensure that monasteries remain vibrant
+        centers of spirituality, culture, and community life.
+      </p>
+    </div>
+    <div class="grid cols-3">
+      <article class="card">
+        <div class="icon1"><img src="gov/support.jpeg" alt="Heritage conservation"></div>
+        <h3>Heritage Conservation</h3>
+        <p>
+          The state actively supports restoration of ancient monasteries, murals,
+          and manuscripts—ensuring that future generations inherit this living legacy.
+        </p>
+      </article>
+      <article class="card">
+        <div class="icon1"><img src="gov/tourism.jpeg" alt="Tourism promotion"></div>
+        <h3>Tourism Promotion</h3>
+        <p>
+          By promoting sustainable tourism, the government connects monasteries with
+          global visitors while preserving their sanctity and cultural significance.
+        </p>
+      </article>
+      <article class="card">
+        <div class="icon1"><img src="gov/digital.jpeg" alt="Digital Sikkim"></div>
+        <h3>Digital Sikkim</h3>
+        <p>
+          Under its vision of a digital-first future, Sikkim encourages platforms
+          like <em>Monastery360</em>, making heritage accessible to anyone, anywhere.
+        </p>
+      </article>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer class="container" id="contact">
     <div class="footer-grid">
       <div>
         <h3 style="margin:0 0 .3rem">Monastery360</h3>
-        <p>Project to preserve and showcase the monasteries of Sikkim through digital storytelling. Built to be fast, offline-friendly and privacy-respecting.</p>
+        <p>Project to preserve and showcase the monasteries of Sikkim through digital storytelling. Built to be fast,
+          offline-friendly and privacy-respecting.</p>
       </div>
       <div>
         <strong>Links</strong>
@@ -212,7 +336,7 @@ Major Monasteries
       <div>
         <strong>Contact</strong>
         <p style="margin:.4rem 0 0">Team Monastery360 • Smart India Hackathon 2025</p>
-        <p style="margin:.2rem 0 0">Email: hello@monastery360.local</p>
+        <p style="margin:.2rem 0 0">Email: Eclat@monastery360.local</p>
       </div>
     </div>
   </footer>
@@ -224,8 +348,12 @@ Major Monasteries
       <button class="btn ghost" data-close>Close</button>
     </div>
     <div class="modal-body">
-      <p>Monastery360 is a student project aligned with SIH-2025 that aims to <em>digitally preserve</em> the rich heritage of Sikkim’s monasteries. The site is engineered to be <strong>risk-free</strong>: no third-party scripts, no trackers, and all heavy content is optional and opens externally (e.g., Street View, Google Maps).</p>
-      <p>Source images in this demo are <em>placeholder art</em> embedded as SVG for offline use. You can swap them with your own photos easily—see the developer notes in code.</p>
+      <p>Monastery360 is a student project aligned with SIH-2025 that aims to <em>digitally preserve</em> the rich
+        heritage of Sikkim’s monasteries. The site is engineered to be <strong>risk-free</strong>: no third-party
+        scripts, no trackers, and all heavy content is optional and opens externally (e.g., Street View, Google Maps).
+      </p>
+      <p>Source images in this demo are <em>placeholder art</em> embedded as SVG for offline use. You can swap them with
+        your own photos easily—see the developer notes in code.</p>
     </div>
   </dialog>
 
@@ -259,8 +387,13 @@ Major Monasteries
       <button id="chatbot-close">×</button>
     </div>
     <div id="chatbot-messages"></div>
-    <input type="text" id="chatbot-input" placeholder="Ask me about monasteries..."/>
-    
+    <input type="text" id="chatbot-input" placeholder="Ask me about monasteries..." />
+
   </div>
+  <!-- Review Section -->
+
+
+  
 </body>
+
 </html>
