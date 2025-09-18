@@ -316,7 +316,22 @@
       </article>
     </div>
   </section>
-
+  <!-- VISITOR INTEREST FORM -->
+  <section class="section container" id="visitor-interest">
+    <div>
+      <div class="kicker">Plan Your Visit</div>
+      <h2 class="title">Interested in Visiting Sikkim Monasteries?</h2>
+      <p class="sub">Let us know if you plan to visit! Submit your details and we'll keep you updated about events, travel tips, and more.</p>
+    </div>
+    <form id="interestForm" style="max-width:480px;margin:auto;display:flex;flex-direction:column;gap:1.1rem;">
+      <input type="text" name="name" placeholder="Your Name" required style="padding:0.8rem;border-radius:10px;border:1px solid #ccc;">
+      <input type="email" name="email" placeholder="Your Email" required style="padding:0.8rem;border-radius:10px;border:1px solid #ccc;">
+      <input type="tel" name="phone" placeholder="Phone (optional)" style="padding:0.8rem;border-radius:10px;border:1px solid #ccc;">
+      <textarea name="message" placeholder="Message (optional)" rows="3" style="padding:0.8rem;border-radius:10px;border:1px solid #ccc;"></textarea>
+      <button class="btn" type="submit">Submit Interest</button>
+      <div id="interestStatus" style="margin-top:0.5rem;font-weight:600;"></div>
+    </form>
+  </section>
   <!-- FOOTER -->
   <footer class="container" id="contact">
     <div class="footer-grid">
@@ -376,6 +391,39 @@
   </template>
 
   <script src="script.js"></script>
+  <script>
+    document.getElementById('interestForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const status = document.getElementById('interestStatus');
+      status.textContent = '';
+      const data = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        phone: form.phone.value.trim(),
+        message: form.message.value.trim()
+      };
+      try {
+        const res = await fetch('http://localhost:4000/api/visitors', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (res.ok) {
+          status.textContent = 'Thank you! Your interest has been recorded.';
+          status.style.color = 'var(--success)';
+          form.reset();
+        } else {
+          const err = await res.json();
+          status.textContent = err.error || 'Submission failed.';
+          status.style.color = 'var(--brand-2)';
+        }
+      } catch (err) {
+        status.textContent = 'Could not connect to server.';
+        status.style.color = 'var(--brand-2)';
+      }
+    });
+  </script>
 
   <!-- Chatbot Button -->
   <div id="chatbot-toggle">💬</div>
@@ -391,6 +439,7 @@
 
   </div>
   <!-- Review Section -->
+   
 
 
   
