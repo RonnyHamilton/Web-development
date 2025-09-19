@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Monastery360 – Digitize & Showcase Monasteries of Sikkim</title>
+  <meta name="description" content="Immersive, performance-first landing page to explore Sikkim monasteries with history, maps and optional 360° links." />
+  <link rel="stylesheet" href="style.css" class="css">
+
+<style>
+.tts-bar { display:flex; gap:.5rem; align-items:center; flex-wrap:wrap; margin-top: .8rem; }
+.tts-bar .btn { padding:.45rem .7rem; border-radius:10px; font-weight:800 }
+.tts-indicator { font-size:.9rem; color: var(--muted); }
+</style>
+
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav class="nav container">
+    <div class="nav-inner glass">
+      <div class="brand"><span class="logo"></span> Monastery360</div>
+      <div class="links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#explore">Explore</a>
+        <a href="#impact">Impact</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="btn ghost" id="themeToggler" title="Toggle theme">Toggle</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero container">
+    <div class="hero-wrap">
+      <div>
+        <span class="tag">Smart India Hackathon 2025</span>
+        <h1>Digitize & Showcase <span style="color:var(--accent)">Monasteries of Sikkim</span> with immersive storytelling</h1>
+        <p>Explore living heritage through <strong>virtual walk-throughs</strong>, curated histories, interactive maps and community powered archives. Built with a performance-first, privacy-friendly design that works anywhere—no logins, no trackers.</p>
+        <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1.2rem">
+          <a class="btn" href="#explore">Explore Monasteries</a>
+          <button class="btn ghost" id="aboutBtn">About Project</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-badge tag">New • 2025 Edition</div>
+        <div class="floating">
+          <div class="chip">Offline-friendly</div>
+          <div class="chip">No external libs</div>
+          <div class="chip">WCAG AA</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FEATURES -->
+  <section class="section container" id="features">
+    <div style="margin-bottom:1rem">
+      <div class="kicker">Core features</div>
+      <h2 class="title">Immersive, informative and accessible</h2>
+      <p class="sub">Each monastery page blends visuals, verified history, practical travel info and optional <em>external</em> 360° views (opens in a new tab) to keep the site risk-free.</p>
+    </div>
+    <div class="grid cols-3">
+      <article class="card">
+        <div class="icon">📸</div>
+        <h3>Virtual 360° (External)</h3>
+        <p>Launch Street View links in one click—kept outside the site to avoid embed/network issues.</p>
+      </article>
+      <article class="card">
+        <div class="icon">📖</div>
+        <h3>History & Culture</h3>
+        <p>Curated origin stories, founding lineages, festivals and manuscript references.</p>
+      </article>
+      <article class="card">
+        <div class="icon">🗺️</div>
+        <h3>Explore by Map</h3>
+        <p>Open-in-Maps buttons for directions without loading external iframes on page.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- EXPLORE GRID -->
+  <section class="section container" id="explore">
+    <div style="display:flex; align-items:end; justify-content:space-between; gap:1rem; margin-bottom:1rem; flex-wrap:wrap">
+      <div>
+        <div class="kicker">Discover</div>
+        <h2 class="title">Sikkim Monasteries</h2>
+        <p class="sub">Sikkim is home to many significant monasteries (Gompas) that are centers of spiritual and cultural life, including the famous Rumtek Monastery.
+      </div>
+      <div class="filters" role="search">
+        <input id="search" class="search" placeholder="Search by name, region or lineage…" aria-label="Search monasteries"/>
+        <button class="btn ghost" id="showFavs">★ Favorites</button>
+      </div>
+    </div>
+
+    <div id="grid" class="grid cols-3"></div>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="section container" id="impact">
+    <div>
+      <div class="kicker">Preservation impact</div>
+      <h2 class="title">From documentation to community benefits</h2>
+      <p class="sub">A transparent pipeline ensures cultural assets are respectfully documented and communities are supported.</p>
+    </div>
+    <div class="timeline">
+      <div class="mile">
+        <div class="dot floaty"></div>
+        <div class="card">
+          <strong>Digital Documentation</strong>
+          <p>High-resolution imagery, oral histories, and cataloged artifacts with proper attributions.</p>
+        </div>
+      </div>
+      <div class="mile">
+        <div class="dot floaty" style="animation-delay:.2s"></div>
+        <div class="card">
+          <strong>Education & Awareness</strong>
+          <p>Contextual storytelling for students, researchers and visitors—online and offline.</p>
+        </div>
+      </div>
+      <div class="mile">
+        <div class="dot floaty" style="animation-delay:.4s"></div>
+        <div class="card">
+          <strong>Tourism Enablement</strong>
+          <p>Respectful travel via map links, hours, and festival calendars supporting local guides.</p>
+        </div>
+      </div>
+      <div class="mile">
+        <div class="dot floaty" style="animation-delay:.6s"></div>
+        <div class="card">
+          <strong>Manuscript Archiving</strong>
+          <p>Index references for rare texts; keep scans off-site where access policies require.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="container" id="contact">
+    <div class="footer-grid">
+      <div>
+        <h3 style="margin:0 0 .3rem">Monastery360</h3>
+        <p>Project to preserve and showcase the monasteries of Sikkim through digital storytelling. Built to be fast, offline-friendly and privacy-respecting.</p>
+      </div>
+      <div>
+        <strong>Links</strong>
+        <ul style="list-style:none; padding:0; margin:.4rem 0 0; display:grid; gap:.4rem">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#explore">Explore</a></li>
+          <li><a href="#impact">Impact</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p style="margin:.4rem 0 0">Team Monastery360 • Smart India Hackathon 2025</p>
+        <p style="margin:.2rem 0 0">Email: hello@monastery360.local</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ABOUT MODAL -->
+  <dialog id="aboutModal">
+    <div class="modal-head">
+      <strong>About Monastery360</strong>
+      <button class="btn ghost" data-close>Close</button>
+    </div>
+    <div class="modal-body">
+      <p>Monastery360 is a student project aligned with SIH-2025 that aims to <em>digitally preserve</em> the rich heritage of Sikkim’s monasteries. The site is engineered to be <strong>risk-free</strong>: no third-party scripts, no trackers, and all heavy content is optional and opens externally (e.g., Street View, Google Maps).</p>
+      <p>Source images in this demo are <em>placeholder art</em> embedded as SVG for offline use. You can swap them with your own photos easily—see the developer notes in code.</p>
+    </div>
+  </dialog>
+
+  <template id="cardTpl">
+    <article class="monk-card" data-name data-region data-lineage>
+      <div class="media">
+        <button class="fav" title="Add to favorites">★</button>
+      </div>
+      <div class="body">
+        <h3 class="nm" style="margin:.2rem 0 .3rem"></h3>
+        <div class="muted" style="color:var(--muted); font-size:.92rem"></div>
+        <div class="chip-row"></div>
+        <div class="actions">
+          <a class="btn" target="_blank" rel="noopener" data-views>Open 360°</a>
+          <a class="btn ghost" target="_blank" rel="noopener" data-map>Open in Maps</a>
+          <button class="btn ghost" data-more>Details</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+
+<script>
+// ---------- AI Narration (SpeechSynthesis) ----------
+const Narrator = (() => {
+  const supported = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+  let voices = [], preferredVoice = null;
+  let currentUtter = null;
+  let speaking = false, paused = false;
+
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices() || [];
+    preferredVoice =
+      voices.find(v => /en-(IN|US|GB)/i.test(v.lang) && /female/i.test(v.name)) ||
+      voices.find(v => /en-(IN|US|GB)/i.test(v.lang)) ||
+      voices.find(v => /^en/i.test(v.lang)) || null;
+  }
+  if (supported) {
+    loadVoices();
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+  }
+
+  function cleanHtmlToText(html) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    const text = tmp.textContent || tmp.innerText || '';
+    return text.replace(/\s+\n/g, '\n').replace(/\n{2,}/g, '\n').replace(/\s{2,}/g, ' ').trim();
+  }
+  function buildScript(monastery) {
+    const header = `${monastery.name}. Region: ${monastery.region}. Lineage: ${(monastery.lineage||[]).join(', ')}.`;
+    const body = monastery.details ? cleanHtmlToText(monastery.details) : (monastery.blurb || '');
+    return `${header} ${body}`;
+  }
+  function speak(text, opts = {}) {
+    stop();
+    if (!supported) return;
+    const u = new SpeechSynthesisUtterance(text);
+    if (preferredVoice) u.voice = preferredVoice;
+    u.lang = (preferredVoice && preferredVoice.lang) || 'en-IN';
+    u.rate = opts.rate ?? 1.0;
+    u.pitch = opts.pitch ?? 1.0;
+    u.volume = opts.volume ?? 1.0;
+    u.onstart = () => { speaking = true; paused = false; };
+    u.onend = () => { speaking = false; paused = false; currentUtter = null; };
+    u.onerror = () => { speaking = false; paused = false; currentUtter = null; };
+    currentUtter = u;
+    window.speechSynthesis.speak(u);
+  }
+  function pause(){ if (supported && speaking && !paused) { speechSynthesis.pause(); paused = true; } }
+  function resume(){ if (supported && paused) { speechSynthesis.resume(); paused = false; } }
+  function stop(){ if (supported && (speaking || paused)) { speechSynthesis.cancel(); speaking=false; paused=false; currentUtter=null; } }
+  function status(){ return { supported, speaking, paused, preferredVoice }; }
+  return { status, buildScript, speak, pause, resume, stop };
+})();
+
+// ---------- openDetails override (adds voice bar + auto-speak) ----------
+(function(){
+  window.openDetails = function(m){
+    const dlg = document.createElement('dialog');
+    const ttsSupported = Narrator.status().supported;
+    const lineage = Array.isArray(m.lineage) ? m.lineage : (m.lineage ? [m.lineage] : []);
+    const detailsHtml = m.details ? m.details : (m.blurb ? `<p>${m.blurb}</p>` : "<p>No additional details available.</p>");
+
+    dlg.innerHTML = `
+      <div class="modal-head">
+        <strong>${m.name || "Monastery"}</strong>
+        <button class="btn ghost" data-close>Close</button>
+      </div>
+      <div class="modal-body">
+        <p style="margin-top:0; color: var(--muted)">${m.region || ""} ${lineage.length ? " • Lineage: " + lineage.join(', ') : ""}</p>
+        ${detailsHtml}
+        <div class="tts-bar">
+          <button class="btn" data-tts-play ${ttsSupported ? '' : 'disabled'}>🔊 Narrate</button>
+          <button class="btn ghost" data-tts-pause ${ttsSupported ? '' : 'disabled'}>⏸️ Pause</button>
+          <button class="btn ghost" data-tts-resume ${ttsSupported ? '' : 'disabled'}>▶️ Resume</button>
+          <button class="btn ghost" data-tts-stop ${ttsSupported ? '' : 'disabled'}>⏹️ Stop</button>
+          <span class="tts-indicator">${ttsSupported ? 'English voice-over available' : 'Voice-over not supported on this browser'}</span>
+        </div>
+        <div class="actions" style="margin-top: .9rem">
+          ${m.view360 ? `<a class="btn" target="_blank" rel="noopener" href="${m.view360}">Open 360°</a>` : ''}
+          ${m.map ? `<a class="btn ghost" target="_blank" rel="noopener" href="${m.map}">Open in Maps</a>` : ''}
+        </div>
+      </div>`;
+
+    document.body.appendChild(dlg);
+    dlg.showModal();
+    const close = () => { Narrator.stop(); dlg.close(); dlg.remove(); };
+    dlg.querySelector('[data-close]').addEventListener('click', close);
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) close(); });
+
+    if (!ttsSupported) return;
+    const script = Narrator.buildScript({
+      name: m.name || "Monastery",
+      region: m.region || "",
+      lineage,
+      details: m.details || null,
+      blurb: m.blurb || ""
+    });
+
+    // Auto-narrate immediately when Details opens
+    Narrator.speak(script);
+
+    // Manual controls
+    dlg.querySelector('[data-tts-play]').addEventListener('click', () => Narrator.speak(script));
+    dlg.querySelector('[data-tts-pause]').addEventListener('click', () => Narrator.pause());
+    dlg.querySelector('[data-tts-resume]').addEventListener('click', () => Narrator.resume());
+    dlg.querySelector('[data-tts-stop]').addEventListener('click', () => Narrator.stop());
+  };
+})();
+</script>
+
+</body>
+</html>
